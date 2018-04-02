@@ -211,4 +211,6 @@
     <bool name="config_defaultBatteryPercentageSetting">true</bool>
 
     <bool name="config_dt2sGestureEnabledByDefault">true</bool>
+
+    <string name="config_default_dns_server">1.1.1.1</string>
 </resources>
