@@ -171,5 +171,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(CUSTOM_PRODUCT_DIR)/config/permissions/privapp-permissions-custom.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-custom.xml
 
+# Sensors
+PRODUCT_PACKAGES += \
+    android.frameworks.sensorservice@1.0.vendor
+
 include $(CUSTOM_PRODUCT_DIR)/config/apps.mk
 include $(CUSTOM_PRODUCT_DIR)/config/overlays.mk
