@@ -223,6 +223,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += custom_fonts_customization_product
 
+PRODUCT_PACKAGES += \
+    GmsCompat
+
 PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard $(CUSTOM_PRODUCT_DIR)/release/release_config_map.mk)
 
 $(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/branding.mk)
