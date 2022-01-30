@@ -126,6 +126,11 @@ endif
 #     nano_recovery
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
+    system/app/GmsCompat/GmsCompat.apk \
+    system/app/GmsCompatConfig/GmsCompatConfig.apk \
+    system/app/GmsCompatLib/GmsCompatLib.apk \
+    system/etc/default-permissions/app.grapheneos.gmscompat.xml \
+    system/etc/sysconfig/app.grapheneos.gmscompat.xml \
     system/bin/curl \
     system/bin/getcap \
     system/bin/setcap \
