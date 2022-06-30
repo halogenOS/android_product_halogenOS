@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <color name="system_accent1_0">#ffffff</color>
+        <color name="system_accent1_10">#fafdfe</color>
+        <color name="system_accent1_50">#E3F2FD</color>
+        <color name="system_accent1_100">#e8f3fc</color>
+        <color name="system_accent1_200">#d1e7fa</color>
+        <color name="system_accent1_300">#a4cff4</color>
+        <color name="system_accent1_400">#76b7ef</color>
+        <color name="system_accent1_500">#489eea</color>
+        <color name="system_accent1_600">#1E88E5</color>
+        <color name="system_accent1_700">#156bb7</color>
+        <color name="system_accent1_800">#0b365b</color>
+        <color name="system_accent1_900">#051b2e</color>
+        <color name="system_accent1_1000">#000000</color>
+
+        <color name="system_accent2_0">#ffffff</color>
+        <color name="system_accent2_10">#fafdff</color>
+        <color name="system_accent2_50">#e7f7fe</color>
+        <color name="system_accent2_100">#ceeefd</color>
+        <color name="system_accent2_200">#9dddfb</color>
+        <color name="system_accent2_300">#6cccf9</color>
+        <color name="system_accent2_400">#3bbbf7</color>
+        <color name="system_accent2_500">#0aa7f0</color>
+        <color name="system_accent2_600">#0888c4</color>
+        <color name="system_accent2_700">#066693</color>
+        <color name="system_accent2_800">#044462</color>
+        <color name="system_accent2_900">#022231</color>
+        <color name="system_accent2_1000">#000000</color>
+
+        <color name="system_accent3_0">#ffffff</color>
+        <color name="system_accent3_10">#fcfcfd</color>
+        <color name="system_accent3_50">#f1eef7</color>
+        <color name="system_accent3_100">#e2dcef</color>
+        <color name="system_accent3_200">#c6bade</color>
+        <color name="system_accent3_300">#a997ce</color>
+        <color name="system_accent3_400">#8d74be</color>
+        <color name="system_accent3_500">#6e50aa</color>
+        <color name="system_accent3_600">#5a418b</color>
+        <color name="system_accent3_700">#433168</color>
+        <color name="system_accent3_800">#2d2145</color>
+        <color name="system_accent3_900">#161023</color>
+        <color name="system_accent3_1000">#000000</color>
+</resources>
