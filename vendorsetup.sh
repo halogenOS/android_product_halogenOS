@@ -3,6 +3,7 @@ this_product_name="halogenOS"
 
 export CUSTOM_PRODUCT="${CUSTOM_PRODUCT:=$this_product_name}"
 export CUSTOM_PRODUCT_DIR="product/$this_product_name"
+export CUSTOM_PRODUCT_NAME="$this_product_name"
 
 if [[ "$CUSTOM_PRODUCT" == "$this_product_name" ]]; then
     XOS_TOOLS_SCRIPT="external/xos/xostools/xostools.sh"
