@@ -14,11 +14,15 @@
 # limitations under the License.
 
 $(call inherit-product, build/target/product/sdk_phone_x86_64.mk)
-include $(CUSTOM_PRODUCT_DIR)/build/targets/base/generic.mk
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/build/targets/base/generic.mk)
 
-# No mainline checking
+PRODUCT_COPY_FILES += \
+    device/generic/goldfish/data/etc/permissions/privapp-permissions-goldfish.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-goldfish.xml \
+
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=
+MODULE_BUILD_FROM_SOURCE := true
 
 # Overrides
 PRODUCT_NAME := aosp_sdk_phone_x86_64
 PRODUCT_MODEL := $(CUSTOM_PRODUCT_NAME) for x86_64
+PRODUCT_BRAND := Generic
