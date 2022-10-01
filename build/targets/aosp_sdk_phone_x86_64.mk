@@ -15,12 +15,7 @@
 
 $(call inherit-product, build/target/product/sdk_phone_x86_64.mk)
 $(call inherit-product, $(CUSTOM_PRODUCT_DIR)/build/targets/base/generic.mk)
-
-PRODUCT_COPY_FILES += \
-    device/generic/goldfish/data/etc/permissions/privapp-permissions-goldfish.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-goldfish.xml \
-
-PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=
-MODULE_BUILD_FROM_SOURCE := true
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/build/targets/base/aosp_sdk_phone.mk)
 
 # Overrides
 PRODUCT_NAME := aosp_sdk_phone_x86_64

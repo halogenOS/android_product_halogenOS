@@ -18,5 +18,3 @@ $(call inherit-product, $(CUSTOM_PRODUCT_DIR)/build/config/common.mk)
 # Allow building otatools
 TARGET_FORCE_OTA_PACKAGE := true
 
-PRODUCT_SDK_ADDON_NAME := custom
-PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(LOCAL_PATH)/source.properties
