@@ -13,7 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/build/config/common.mk)
+$(call inherit-product, build/target/product/generic.mk)
+
+include $(CUSTOM_PRODUCT_DIR)/build/config/common.mk
 
 # Allow building otatools
 TARGET_FORCE_OTA_PACKAGE := true

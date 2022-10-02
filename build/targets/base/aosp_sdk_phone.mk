@@ -15,11 +15,24 @@
 # limitations under the License.
 #
 
-PRODUCT_COPY_FILES += \
-    device/generic/goldfish/data/etc/permissions/privapp-permissions-goldfish.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-goldfish.xml \
-
-PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
 MODULE_BUILD_FROM_SOURCE := true
 
+BUILD_EMULATOR := true
+
 PRODUCT_SDK_ADDON_NAME := custom
-PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(LOCAL_PATH)/source.properties
+PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(CUSTOM_PRODUCT_DIR)/build/targets/base/source.properties
+
+# This is needed for INTERNAL_SDK_HOST_OS_NAME
+ifeq ($(HOST_ARCH),x86_64)
+SDK_HOST_ARCH := x86
+else
+SDK_HOST_ARCH := $(REAL_HOST_ARCH)
+endif
+
+# The Makefile appears to have a bug where this is only
+# set when building the 'sdk' target so it would not be
+# set for the 'sdk_addon' target. Specifying the 'sdk' target
+# disallows specifying any other target in addition so this
+# seems to be the right way to handle this situation.
+INTERNAL_SDK_HOST_OS_NAME := linux-$(SDK_HOST_ARCH)

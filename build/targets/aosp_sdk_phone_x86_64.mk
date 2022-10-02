@@ -13,11 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, build/target/product/sdk_phone_x86_64.mk)
-$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/build/targets/base/generic.mk)
-$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/build/targets/base/aosp_sdk_phone.mk)
+$(call inherit-product, build/make/target/product/sdk_phone_x86_64.mk)
+include $(CUSTOM_PRODUCT_DIR)/build/targets/base/aosp_sdk_phone.mk
 
 # Overrides
 PRODUCT_NAME := aosp_sdk_phone_x86_64
+PRODUCT_DEVICE := emulator_x86_64
 PRODUCT_MODEL := $(CUSTOM_PRODUCT_NAME) for x86_64
 PRODUCT_BRAND := Generic
