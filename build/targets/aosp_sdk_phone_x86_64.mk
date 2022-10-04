@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, build/make/target/product/sdk_phone_x86_64.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/sdk_phone_x86_64.mk)
 include $(CUSTOM_PRODUCT_DIR)/build/targets/base/aosp_sdk_phone.mk
 
 # Overrides

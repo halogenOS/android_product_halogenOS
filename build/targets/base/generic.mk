@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, build/target/product/generic.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/generic.mk)
 
 include $(CUSTOM_PRODUCT_DIR)/build/config/common.mk
 
