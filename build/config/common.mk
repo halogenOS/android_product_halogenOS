@@ -15,7 +15,14 @@
 # limitations under the License.
 #
 
-include $(CUSTOM_PRODUCT_DIR)/build/config/branding.mk
-
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+
+PRODUCT_SOONG_NAMESPACES += $(CUSTOM_PRODUCT_DIR)/config
+
+PRODUCT_PACKAGES += \
+    ThemePicker \
+    ThemeStub
+
+PRODUCT_PACKAGES += \
+    aosp-sysconfig.xml
