@@ -1,5 +1,5 @@
-# Inherit common mobile Lineage stuff
-$(call inherit-product, vendor/lineage/config/common.mk)
+# Inherit common mobile custom stuff
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/common.mk)
 
 # Default notification/alarm sounds
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -40,6 +40,9 @@ endif
 PRODUCT_PACKAGES += \
     charger_res_images
 
+ifneq ($(WITH_CUSTOM_CHARGER),)
+WITH_LINEAGE_CHARGER := $(WITH_CUSTOM_CHARGER)
+endif
 ifneq ($(WITH_LINEAGE_CHARGER),false)
 PRODUCT_PACKAGES += \
     lineage_charger_animation \
@@ -55,7 +58,6 @@ PRODUCT_PACKAGES += \
     IconShapeTaperedRectOverlay \
     IconShapeTeardropOverlay \
     IconShapeVesselOverlay \
-    LineageNavigationBarNoHint \
     NavigationBarMode2ButtonOverlay
 
 # Media

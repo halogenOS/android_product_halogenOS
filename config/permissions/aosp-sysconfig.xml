@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-
-     Copyright (C) 2018 The Android Open Source Project
+<!-- Copyright (C) 2017 The Android Open Source Project
+     Copyright (C) 2017-2018 The LineageOS Project
+     Copyright (C) 2022 The halogenOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,7 +15,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <!--string name="themes_stub_package" translatable="false">org.lineageos.customization</string>
-    <string name="clocks_stub_package" translatable="false">org.lineageos.customization</string-->
-</resources>
+<config>
+    <!-- Allowlist of components permitted to run in the background -->
+    <allow-in-power-save package="com.android.deskclock" />
+     <!-- Broadcast actions that are currently exempted from O+ background
+     delivery restrictions. -->
+    <allow-implicit-broadcast action="android.intent.action.CAMERA_BUTTON" />
+</config>

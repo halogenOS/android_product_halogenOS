@@ -1,9 +1,9 @@
-# Inherit mini common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_mini.mk)
+# Inherit mini common custom stuff
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/common_mini.mk)
 
 # Required packages
 PRODUCT_PACKAGES += \
     androidx.window.extensions \
     LatinIME
 
-$(call inherit-product, vendor/lineage/config/telephony.mk)
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/telephony.mk)
