@@ -162,3 +162,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
 
 PRODUCT_PACKAGES += \
     NetworkStackOverlay
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    $(CUSTOM_PRODUCT_DIR)/config/permissions/privapp-permissions-custom.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-custom.xml
