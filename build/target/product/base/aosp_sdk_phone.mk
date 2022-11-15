@@ -23,7 +23,7 @@ MODULE_BUILD_FROM_SOURCE := true
 BUILD_EMULATOR := true
 
 PRODUCT_SDK_ADDON_NAME := custom
-PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(CUSTOM_PRODUCT_DIR)/build/targets/base/source.properties
+PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(CUSTOM_PRODUCT_DIR)/build/target/product/base/source.properties
 
 # This is needed for INTERNAL_SDK_HOST_OS_NAME
 ifeq ($(HOST_ARCH),x86_64)
