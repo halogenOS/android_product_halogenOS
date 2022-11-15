@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # Copyright (C) 2012-2013, The CyanogenMod Project
 #           (C) 2017-2018,2020-2021, The LineageOS Project
+# Copyright (C) 2022 The halogenOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -39,6 +40,10 @@ except ImportError:
 
 from xml.etree import ElementTree
 
+org_git = "git.halogenos.org"
+org_manifest = "XOS"
+org_display = "halogenOS"
+custom_default_revision = "XOS-13.0"
 product = sys.argv[1]
 
 if len(sys.argv) > 2:
@@ -51,39 +56,27 @@ try:
 except:
     device = product
 
+if device.find("sdk_phone") == 0:
+    print("SDK Phone, skipping roomservice")
+    sys.exit()
+
 if not depsonly:
-    print("Device %s not found. Attempting to retrieve device repository from LineageOS Github (http://github.com/LineageOS)." % device)
+    print("Device %s not found. Attempting to retrieve device repository." % device)
 
 repositories = []
 
-try:
-    authtuple = netrc.netrc().authenticators("api.github.com")
-
-    if authtuple:
-        auth_string = ('%s:%s' % (authtuple[0], authtuple[2])).encode()
-        githubauth = base64.encodestring(auth_string).decode().replace('\n', '')
-    else:
-        githubauth = None
-except:
-    githubauth = None
-
-def add_auth(githubreq):
-    if githubauth:
-        githubreq.add_header("Authorization","Basic %s" % githubauth)
-
 if not depsonly:
-    githubreq = urllib.request.Request("https://api.github.com/search/repositories?q=%s+user:LineageOS+in:name+fork:true" % device)
-    add_auth(githubreq)
+    req = urllib.request.Request(
+        "https://{2}/api/v4/groups/{1}/projects?"
+        "search={0}".format(device, org_display, org_git))
     try:
-        result = json.loads(urllib.request.urlopen(githubreq).read().decode())
+        repositories = json.loads(urllib.request.urlopen(req).read().decode())
     except urllib.error.URLError:
-        print("Failed to search GitHub")
+        print("Failed to search")
         sys.exit(1)
     except ValueError:
-        print("Failed to parse return data from GitHub")
+        print("Failed to parse return data")
         sys.exit(1)
-    for res in result.get('items', []):
-        repositories.append(res)
 
 local_manifests = r'.repo/local_manifests'
 if not os.path.exists(local_manifests): os.makedirs(local_manifests)
@@ -123,12 +116,6 @@ def get_manifest_path():
     except IndexError:
         return ".repo/manifests/{}".format(m.find("include").get("name"))
 
-def get_default_revision():
-    m = ElementTree.parse(get_manifest_path())
-    d = m.findall('default')[0]
-    r = d.get('revision')
-    return r.replace('refs/heads/', '').replace('refs/tags/', '')
-
 def get_from_manifest(devicename):
     try:
         lm = ElementTree.parse(".repo/local_manifests/roomservice.xml")
@@ -137,7 +124,7 @@ def get_from_manifest(devicename):
         lm = ElementTree.Element("manifest")
 
     for localpath in lm.findall("project"):
-        if re.search("android_device_.*_%s$" % device, localpath.get("name")):
+        if re.search("(android_|platform_)?device_.*_%s$" % device, localpath.get("name")):
             return localpath.get("path")
 
     return None
@@ -164,9 +151,19 @@ def is_in_manifest(projectpath):
         if localpath.get("path") == projectpath:
             return True
 
-    # ... and don't forget the lineage snippet
+    # ... and don't forget the snippets
     try:
-        lm = ElementTree.parse(".repo/manifests/snippets/lineage.xml")
+        lm = ElementTree.parse(".repo/manifests/snippets/git-srvs.xml")
+        lm = lm.getroot()
+    except:
+        lm = ElementTree.Element("manifest")
+
+    for localpath in lm.findall("project"):
+        if localpath.get("path") == projectpath:
+            return True
+
+    try:
+        lm = ElementTree.parse(".repo/manifests/snippets/XOS.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -187,18 +184,40 @@ def add_to_manifest(repositories):
     for repository in repositories:
         repo_name = repository['repository']
         repo_target = repository['target_path']
-        repo_revision = repository['branch']
+
+        if 'branch' in repository:
+            repo_revision=repository['branch']
+        else:
+            repo_revision=custom_default_revision
+
+        if 'remote' in repository:
+            repo_remote=repository['remote']
+        elif "/" not in repo_name:
+            repo_remote=org_manifest
+        elif "/" in repo_name:
+            repo_remote="github"
+
         print('Checking if %s is fetched from %s' % (repo_target, repo_name))
         if is_in_manifest(repo_target):
-            print('LineageOS/%s already fetched to %s' % (repo_name, repo_target))
+            print('%s already fetched to %s' % (repo_name, repo_target))
             continue
 
-        print('Adding dependency: LineageOS/%s -> %s' % (repo_name, repo_target))
+        print('Adding dependency:\nRepository: %s\nRevision: %s\nRemote: %s\nPath: %s\n' % (repo_name, repo_revision, repo_remote, repo_path))
         project = ElementTree.Element("project", attrib = {
             "path": repo_target,
-            "remote": "github",
-            "name": "LineageOS/%s" % repo_name,
-            "revision": repo_revision })
+            "remote": repo_remote,
+            "name": repo_name,
+        })
+        if repo_revision is not None:
+            project.set('revision', repo_revision)
+        else:
+            print("Using revision %s for %s" %
+                  (custom_default_revision, repo_name))
+            project.set('revision', custom_default_revision)
+
+        if 'clone_depth' in repository:
+            project.set('clone-depth', repository['clone_depth'])
+
         lm.append(project)
 
     indent(lm, 0)
@@ -211,7 +230,7 @@ def add_to_manifest(repositories):
 
 def fetch_dependencies(repo_path):
     print('Looking for dependencies in %s' % repo_path)
-    dependencies_path = repo_path + '/lineage.dependencies'
+    dependencies_path = repo_path + '/aosp.dependencies'
     syncable_repos = []
     verify_repos = []
 
@@ -241,7 +260,7 @@ def fetch_dependencies(repo_path):
 
     if len(syncable_repos) > 0:
         print('Syncing dependencies')
-        os.system('repo sync --force-sync %s' % ' '.join(syncable_repos))
+        os.system('repo sync --force-sync --no-clone-bundle --no-tags %s' % ' '.join(syncable_repos))
 
     for deprepo in verify_repos:
         fetch_dependencies(deprepo)
@@ -249,23 +268,20 @@ def fetch_dependencies(repo_path):
 def has_branch(branches, revision):
     return revision in [branch['name'] for branch in branches]
 
-def get_default_revision_no_minor():
-    return get_default_revision().rsplit('.', 1)[0]
-
 def get_default_or_fallback_revision(repo_name):
-    default_revision = get_default_revision()
+    default_revision = custom_default_revision
     print("Default revision: %s" % default_revision)
-    print("Checking branch info")
+    print("Checking branch info for %s" % repo_name)
 
-    githubreq = urllib.request.Request("https://api.github.com/repos/LineageOS/" + repo_name + "/branches")
-    add_auth(githubreq)
-    result = json.loads(urllib.request.urlopen(githubreq).read().decode())
+    req = urllib.request.Request(
+        "https://{1}/api/v4/projects/{0}/repository/branches".format(
+            urllib.parse.quote_plus("%s/%s" % (org_display, repo_name)), org_git))
+    result = json.loads(urllib.request.urlopen(req).read().decode())
+
     if has_branch(result, default_revision):
         return default_revision
 
-    fallbacks = [ get_default_revision_no_minor() ]
-    if os.getenv('ROOMSERVICE_BRANCHES'):
-        fallbacks += list(filter(bool, os.getenv('ROOMSERVICE_BRANCHES').split(' ')))
+    fallbacks = [ custom_default_revision ]
 
     for fallback in fallbacks:
         if has_branch(result, fallback):
@@ -291,10 +307,10 @@ if depsonly:
 else:
     for repository in repositories:
         repo_name = repository['name']
-        if re.match(r"^android_device_[^_]*_" + device + "$", repo_name):
+        if re.match(r"^(android_|platform_)?device_[^_]*_" + device + "$", repo_name):
             print("Found repository: %s" % repository['name'])
-            
-            manufacturer = repo_name.replace("android_device_", "").replace("_" + device, "")
+
+            manufacturer = repo_name[repo_name.index("device_")+7:-(len(device)+1)]
             repo_path = "device/%s/%s" % (manufacturer, device)
             revision = get_default_or_fallback_revision(repo_name)
 
@@ -302,11 +318,11 @@ else:
             add_to_manifest([device_repository])
 
             print("Syncing repository to retrieve project.")
-            os.system('repo sync --force-sync %s' % repo_path)
+            os.system('repo sync --force-sync --no-clone-bundle --no-tags %s' % repo_path)
             print("Repository synced!")
 
             fetch_dependencies(repo_path)
             print("Done")
             sys.exit()
 
-print("Repository for %s not found in the LineageOS Github repository list. If this is in error, you may need to manually add it to your local_manifests/roomservice.xml." % device)
+print("Repository for %s not found in the repository list. If this is in error, you may need to manually add it to your local_manifests/roomservice.xml" % device)
