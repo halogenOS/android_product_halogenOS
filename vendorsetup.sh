@@ -23,3 +23,13 @@ if [[ "$CUSTOM_PRODUCT" == "$this_product_name" ]]; then
     export ROM_VERSION="$( (xmlstarlet sel -t -v "/manifest/remote[@name='XOS']/@revision" "$TOP/.repo/manifests/snippets/XOS.xml" | sed -e 's/refs\/heads\///') || \
                             (repo branch | grep '^\*' | awk '{ print $2 }') )"
 fi
+
+breakfast() {
+    if [ -z "$1" ]; then
+        echo "Please specify a device"
+        return 1
+    fi
+    PWD=$(pwd)
+    ${CUSTOM_PRODUCT_DIR}/build/tools/roomservice.py $1
+    cd "$PWD"
+}
