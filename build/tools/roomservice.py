@@ -230,33 +230,60 @@ def add_to_manifest(repositories):
 
 def fetch_dependencies(repo_path):
     print('Looking for dependencies in %s' % repo_path)
-    dependencies_path = repo_path + '/aosp.dependencies'
+
     syncable_repos = []
     verify_repos = []
+    is_lineage = False
+    is_crdroid = False
 
-    if os.path.exists(dependencies_path):
-        dependencies_file = open(dependencies_path, 'r')
-        dependencies = json.loads(dependencies_file.read())
-        fetch_list = []
+    dependencies_path = repo_path + '/aosp.dependencies'
+    if not os.path.exists(dependencies_path):
+        dependencies_path = repo_path + '/lineage.dependencies'
+        if not os.path.exists(dependencies_path):
+            dependencies_path = repo_path + "/crdroid.dependencies"
+            if not os.path.exists(dependencies_path):
+                print("No additional dependencies for %s" % repo_path)
+                return
+            else:
+                is_crdroid = True
+        else:
+            is_lineage = True
 
-        for dependency in dependencies:
-            if not is_in_manifest(dependency['target_path']):
-                fetch_list.append(dependency)
-                syncable_repos.append(dependency['target_path'])
-                if 'branch' not in dependency:
-                    dependency['branch'] = get_default_or_fallback_revision(dependency['repository'])
-            verify_repos.append(dependency['target_path'])
+    dependencies_file = open(dependencies_path, 'r')
+    dependencies = json.loads(dependencies_file.read())
+    fetch_list = []
 
-            if not os.path.isdir(dependency['target_path']):
-                syncable_repos.append(dependency['target_path'])
+    for dependency in dependencies:
+        if not is_in_manifest(dependency['target_path']):
+            if is_crdroid and re.match(r"^crdroidandroid/.+$", dependency['repository']):
+                print("Detected crdroidandroid repository %s, converting" % dependency['repository'])
+                dependency['repository'] = dependency['repository'].removeprefix("crdroidandroid/")
+                groups = re.match(r"^proprietary_vendor_(.+)", dependency['repository'])
+                if groups is not None:
+                    dependency['repository'] = "android_vendor_%s" % (groups.group(1))
+                groups = re.match(r"^(android_vendor_)([A-Za-z0-9]+?)-([A-Za-z0-9-]+)$", dependency['repository'])
+                if groups is not None:
+                    dependency['repository'] = "%s%s_%s" % (groups.group(1), groups.group(2), groups.group(3))
 
-        dependencies_file.close()
+            elif is_lineage and re.match(r"^LineageOS/.+$", dependency['repository']):
+                print("Detected LineageOS repository %s, converting" % dependency['repository'])
+                dependency['repository'] = dependency['repository'].removeprefix("LineageOS/")
 
-        if len(fetch_list) > 0:
-            print('Adding dependencies to manifest')
-            add_to_manifest(fetch_list)
-    else:
-        print('%s has no additional dependencies.' % repo_path)
+            print("Dependency repository: %s" % dependency['repository'])
+            fetch_list.append(dependency)
+            syncable_repos.append(dependency['target_path'])
+            if 'branch' not in dependency:
+                dependency['branch'] = get_default_or_fallback_revision(dependency['repository'])
+        verify_repos.append(dependency['target_path'])
+
+        if not os.path.isdir(dependency['target_path']):
+            syncable_repos.append(dependency['target_path'])
+
+    dependencies_file.close()
+
+    if len(fetch_list) > 0:
+        print('Adding dependencies to manifest')
+        add_to_manifest(fetch_list)
 
     if len(syncable_repos) > 0:
         print('Syncing dependencies')
