@@ -172,4 +172,5 @@
          should also be non-empty.-->
     <string name="config_rawContactsLocalAccountType" translatable="false">com.android.contacts</string>
 
+    <integer name="config_notificationsBatteryFullARGB">0xFF00B4E7</integer>
 </resources>
