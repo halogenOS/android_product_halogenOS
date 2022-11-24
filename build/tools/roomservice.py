@@ -202,7 +202,13 @@ def add_to_manifest(repositories):
             print('%s already fetched to %s' % (repo_name, repo_target))
             continue
 
-        print('Adding dependency:\nRepository: %s\nRevision: %s\nRemote: %s\nPath: %s\n' % (repo_name, repo_revision, repo_remote, repo_path))
+        print('Adding dependency:')
+        print('Repository: %s' % repo_name)
+        print('Revision: %s' % repo_revision)
+        print('Remote: %s' % repo_remote)
+        print('Target: %s' % repo_target)
+        print('Origin: %s' % repo_path)
+        print("")
         project = ElementTree.Element("project", attrib = {
             "path": repo_target,
             "remote": repo_remote,
