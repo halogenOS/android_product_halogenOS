@@ -33,7 +33,7 @@ $(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP)
 	$$MOGRIFY -resize $$RESOLUTION -colors 250 $(INTERMEDIATES)/*/*.png; \
 	SCALE_WIDTH="$$($$MOGRIFY -print %w $(INTERMEDIATES)/part0/$$(ls $(INTERMEDIATES)/part0 | head -n1))"; \
 	SCALE_HEIGHT="$$($$MOGRIFY -print %h $(INTERMEDIATES)/part0/$$(ls $(INTERMEDIATES)/part0 | head -n1))"; \
-	echo "$$SCALE_WIDTH $$SCALE_HEIGHT 60" > $(INTERMEDIATES)/desc.txt; \
+	echo "$$SCALE_WIDTH $$SCALE_HEIGHT $$(cat $(CUSTOM_PRODUCT_DIR)/bootanimation/fps.txt)" > $(INTERMEDIATES)/desc.txt; \
 	cat $(CUSTOM_PRODUCT_DIR)/bootanimation/desc.txt >> $(INTERMEDIATES)/desc.txt
 	$(hide) $(SOONG_ZIP) -L 0 -o $(TARGET_GENERATED_BOOTANIMATION) -C $(INTERMEDIATES) -D $(INTERMEDIATES)
 
