@@ -1,6 +1,7 @@
 #
 # Copyright (C) 2016 The CyanogenMod Project
 #               2017-2019 The LineageOS Project
+#               2019-2022 The halogenOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,25 +22,19 @@ $(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP)
 	@echo "Building bootanimation.zip"
 	@rm -rf $(dir $@)
 	@mkdir -p $(dir $@)
-	$(hide) tar xfp vendor/lineage/bootanimation/bootanimation.tar -C $(INTERMEDIATES)
+	$(hide) cp -R $(CUSTOM_PRODUCT_DIR)/bootanimation/frames/. $(INTERMEDIATES)
 	$(hide) if [ $(TARGET_SCREEN_HEIGHT) -lt $(TARGET_SCREEN_WIDTH) ]; then \
 	    IMAGEWIDTH=$(TARGET_SCREEN_HEIGHT); \
 	else \
 	    IMAGEWIDTH=$(TARGET_SCREEN_WIDTH); \
 	fi; \
-	IMAGESCALEWIDTH=$$IMAGEWIDTH; \
-	IMAGESCALEHEIGHT=$$(expr $$IMAGESCALEWIDTH / 3); \
-	if [ "$(TARGET_BOOTANIMATION_HALF_RES)" = "true" ]; then \
-	    IMAGEWIDTH="$$(expr "$$IMAGEWIDTH" / 2)"; \
-	fi; \
-	IMAGEHEIGHT=$$(expr $$IMAGEWIDTH / 3); \
-	RESOLUTION="$$IMAGEWIDTH"x"$$IMAGEHEIGHT"; \
-	for part_cnt in 0 1 2 3 4; do \
-	    mkdir -p $(INTERMEDIATES)/part$$part_cnt; \
-	done; \
-	prebuilts/tools-lineage/${HOST_OS}-x86/bin/mogrify -resize $$RESOLUTION -colors 250 $(INTERMEDIATES)/*/*.png; \
-	echo "$$IMAGESCALEWIDTH $$IMAGESCALEHEIGHT 60" > $(INTERMEDIATES)/desc.txt; \
-	cat vendor/lineage/bootanimation/desc.txt >> $(INTERMEDIATES)/desc.txt
+	MOGRIFY="prebuilts/tools-lineage/${HOST_OS}-x86/bin/mogrify"; \
+	RESOLUTION="$$IMAGEWIDTH"x"$$IMAGEHEIGHT" ; \
+	$$MOGRIFY -resize $$RESOLUTION -colors 250 $(INTERMEDIATES)/*/*.png; \
+	SCALE_WIDTH="$$($$MOGRIFY -print %w $(INTERMEDIATES)/part0/$$(ls $(INTERMEDIATES)/part0 | head -n1))"; \
+	SCALE_HEIGHT="$$($$MOGRIFY -print %h $(INTERMEDIATES)/part0/$$(ls $(INTERMEDIATES)/part0 | head -n1))"; \
+	echo "$$SCALE_WIDTH $$SCALE_HEIGHT 60" > $(INTERMEDIATES)/desc.txt; \
+	cat $(CUSTOM_PRODUCT_DIR)/bootanimation/desc.txt >> $(INTERMEDIATES)/desc.txt
 	$(hide) $(SOONG_ZIP) -L 0 -o $(TARGET_GENERATED_BOOTANIMATION) -C $(INTERMEDIATES) -D $(INTERMEDIATES)
 
 ifeq ($(TARGET_BOOTANIMATION),)
