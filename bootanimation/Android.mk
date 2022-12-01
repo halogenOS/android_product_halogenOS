@@ -18,21 +18,22 @@
 
 TARGET_GENERATED_BOOTANIMATION := $(TARGET_OUT_INTERMEDIATES)/BOOTANIMATION/bootanimation.zip
 $(TARGET_GENERATED_BOOTANIMATION): INTERMEDIATES := $(TARGET_OUT_INTERMEDIATES)/BOOTANIMATION
-$(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP)
+$(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP) $(shell find $(CUSTOM_PRODUCT_DIR)/bootanimation/ -type f)
 	@echo "Building bootanimation.zip"
-	@rm -rf $(dir $@)
-	@mkdir -p $(dir $@)
+	@rm -rf $(dir $@) $(INTERMEDIATES)
+	@mkdir -p $(dir $@) $(INTERMEDIATES)
 	$(hide) cp -R $(CUSTOM_PRODUCT_DIR)/bootanimation/frames/. $(INTERMEDIATES)
 	$(hide) if [ $(TARGET_SCREEN_HEIGHT) -lt $(TARGET_SCREEN_WIDTH) ]; then \
-	    IMAGEWIDTH=$(TARGET_SCREEN_HEIGHT); \
-	else \
 	    IMAGEWIDTH=$(TARGET_SCREEN_WIDTH); \
+	else \
+	    IMAGEHEIGHT=$(TARGET_SCREEN_HEIGHT); \
 	fi; \
 	MOGRIFY="prebuilts/tools-lineage/${HOST_OS}-x86/bin/mogrify"; \
 	RESOLUTION="$$IMAGEWIDTH"x"$$IMAGEHEIGHT" ; \
-	$$MOGRIFY -resize $$RESOLUTION -colors 250 $(INTERMEDIATES)/*/*.png; \
-	SCALE_WIDTH="$$($$MOGRIFY -print %w $(INTERMEDIATES)/part0/$$(ls $(INTERMEDIATES)/part0 | head -n1))"; \
-	SCALE_HEIGHT="$$($$MOGRIFY -print %h $(INTERMEDIATES)/part0/$$(ls $(INTERMEDIATES)/part0 | head -n1))"; \
+	find $(INTERMEDIATES) -type f -iname '*.png' | xargs -n 1 -P 4 $$MOGRIFY -resize $$RESOLUTION -colors 250; \
+	FIRST_PNG_FILE="$$(find $(INTERMEDIATES) -type f -iname '*.png' | head -n1)"; \
+	SCALE_WIDTH="$$($$MOGRIFY -print %w $$FIRST_PNG_FILE)"; \
+	SCALE_HEIGHT="$$($$MOGRIFY -print %h $$FIRST_PNG_FILE)"; \
 	echo "$$SCALE_WIDTH $$SCALE_HEIGHT $$(cat $(CUSTOM_PRODUCT_DIR)/bootanimation/fps.txt)" > $(INTERMEDIATES)/desc.txt; \
 	cat $(CUSTOM_PRODUCT_DIR)/bootanimation/desc.txt >> $(INTERMEDIATES)/desc.txt
 	$(hide) $(SOONG_ZIP) -L 0 -o $(TARGET_GENERATED_BOOTANIMATION) -C $(INTERMEDIATES) -D $(INTERMEDIATES)
