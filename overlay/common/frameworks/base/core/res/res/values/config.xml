@@ -202,4 +202,7 @@
 
     <!-- List of comma separated package names for which we the system will not show crash, ANR, etc. dialogs. -->
     <string translatable="false" name="config_appsNotReportingCrashes">com.android.statementservice</string>
+
+    <!-- Name of the font family to use in the default lockscreen clock -->
+    <string name="config_clockFontFamily" translatable="false" />
 </resources>
