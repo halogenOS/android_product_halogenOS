@@ -173,7 +173,14 @@
     <string name="config_rawContactsLocalAccountType" translatable="false">com.android.contacts</string>
 
     <integer name="config_notificationsBatteryFullARGB">0xFF00B4E7</integer>
+    <integer name="config_notificationsBatteryLedOn">130</integer>
 
     <!-- Whether to allow all rotations -->
     <bool name="config_allowAllRotations">true</bool>
+
+    <bool name="config_checkWallpaperAtBoot">false</bool>
+
+    <integer name="config_ntpRetry">5</integer>
+
+    <dimen name="config_dialogCornerRadius">3dp</dimen>
 </resources>
