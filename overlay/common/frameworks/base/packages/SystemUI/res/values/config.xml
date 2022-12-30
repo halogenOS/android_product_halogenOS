@@ -36,11 +36,11 @@
     </string-array>
 
     <string name="quick_settings_tiles_default" translatable="false">
-        internet,bt,dnd,flashlight,rotation,batery,airplane,alarm,hotspot,mictoggle,cameratoggle,wallet,controls
+        internet,wifi,cell,bt,dnd,flashlight,rotation,batery,airplane,alarm,hotspot,mictoggle,cameratoggle,wallet,controls
     </string>
 
     <string name="quick_settings_tiles_stock" translatable="false">
-        internet,bt,dnd,flashlight,rotation,batery,airplane,alarm,hotspot,mictoggle,cameratoggle,wallet,controls
+        internet,wifi,cell,bt,dnd,flashlight,rotation,batery,airplane,alarm,hotspot,mictoggle,cameratoggle,wallet,controls
     </string>
 
     <integer name="heads_up_notification_decay">4400</integer>
