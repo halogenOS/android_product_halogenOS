@@ -184,6 +184,4 @@
     <bool name="config_checkWallpaperAtBoot">false</bool>
 
     <integer name="config_ntpRetry">5</integer>
-
-    <dimen name="config_dialogCornerRadius">3dp</dimen>
 </resources>
