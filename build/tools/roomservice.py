@@ -241,15 +241,23 @@ def fetch_dependencies(repo_path):
     verify_repos = []
     is_lineage = False
     is_crdroid = False
+    is_arrow = False
 
     dependencies_path = repo_path + '/aosp.dependencies'
     if not os.path.exists(dependencies_path):
+        # LineageOS dependencies
         dependencies_path = repo_path + '/lineage.dependencies'
         if not os.path.exists(dependencies_path):
+            # crdroidandroid dependencies
             dependencies_path = repo_path + "/crdroid.dependencies"
             if not os.path.exists(dependencies_path):
-                print("No additional dependencies for %s" % repo_path)
-                return
+                # ArrowOS-Devices dependencies
+                dependencies_path = repo_path + "/arrow.dependencies"
+                if not os.path.exists(dependencies_path):
+                    print("No additional dependencies for %s" % repo_path)
+                    return
+                else:
+                    is_arrow = True
             else:
                 is_crdroid = True
         else:
@@ -274,6 +282,9 @@ def fetch_dependencies(repo_path):
             elif is_lineage and re.match(r"^LineageOS/.+$", dependency['repository']):
                 print("Detected LineageOS repository %s, converting" % dependency['repository'])
                 dependency['repository'] = dependency['repository'].removeprefix("LineageOS/")
+
+            elif is_arrow:
+                print("Detected ArrowOS repository %s, no conversion needed" % dependency["repository"])
 
             print("Dependency repository: %s" % dependency['repository'])
             fetch_list.append(dependency)
