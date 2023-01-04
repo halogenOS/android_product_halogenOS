@@ -3,5 +3,5 @@ PRODUCT_PACKAGES += \
 	Etar \
 	ExactCalculator \
 	Jelly \
-	Launcher3 \
+	ArrowLauncher3 \
 	Snap
