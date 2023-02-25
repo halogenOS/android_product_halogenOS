@@ -40,7 +40,7 @@
     </string>
 
     <string name="quick_settings_tiles_stock" translatable="false">
-        internet,wifi,cell,bt,dnd,flashlight,rotation,batery,airplane,alarm,hotspot,mictoggle,cameratoggle,wallet,caffeine,controls
+        internet,wifi,cell,bt,dnd,flashlight,rotation,batery,airplane,alarm,hotspot,mictoggle,cameratoggle,wallet,caffeine,controls,reboot
     </string>
 
     <integer name="heads_up_notification_decay">4400</integer>
