@@ -16,6 +16,8 @@
 
 LOCAL_PATH := $(call my-dir)
 
+blbalbalbl
+
 # Set lineage_charger_density to the density bucket of the device.
 lineage_charger_density := mdpi
 ifneq (,$(TARGET_SCREEN_DENSITY))
