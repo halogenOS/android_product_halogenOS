@@ -39,10 +39,6 @@
         wifi,cell,bt,dnd,flashlight,rotation,airplane,alarm,hotspot,caffeine,mictoggle,cameratoggle,wallet,controls
     </string>
 
-    <string name="quick_settings_tiles_stock" translatable="false">
-        internet,wifi,cell,bt,dnd,flashlight,rotation,batery,airplane,alarm,hotspot,mictoggle,cameratoggle,wallet,caffeine,controls,reboot
-    </string>
-
     <integer name="heads_up_notification_decay">4400</integer>
 
     <!-- Defines system icons to be excluded from the display. That is to say, the icons in the
