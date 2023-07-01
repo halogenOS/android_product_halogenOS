@@ -22,6 +22,7 @@
 # These config vars are usually set in BoardConfig.mk:
 #
 #   TARGET_KERNEL_ADDITIONAL_FLAGS     = Additional make flags, optional
+#   TARGET_KERNEL_BUILD_THREADS        = Thread count used for building kernel, optional, defaults to 4
 #   TARGET_KERNEL_CONFIG               = List of kernel defconfigs, first one being the base one,
 #                                          while all the others are fragments that will be merged
 #                                          to main one in .config.
@@ -242,6 +243,9 @@ endif
 ifneq ($(TARGET_KERNEL_ADDITIONAL_FLAGS),)
     KERNEL_MAKE_FLAGS += $(TARGET_KERNEL_ADDITIONAL_FLAGS)
 endif
+
+TARGET_KERNEL_BUILD_THREADS ?= 1
+KERNEL_MAKE_FLAGS += -j$(TARGET_KERNEL_BUILD_THREADS)
 
 # Internal implementation of make-kernel-target
 # $(1): output path (The value passed to O=)
