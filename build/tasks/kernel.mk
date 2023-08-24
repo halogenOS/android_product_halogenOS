@@ -244,7 +244,7 @@ ifneq ($(TARGET_KERNEL_ADDITIONAL_FLAGS),)
     KERNEL_MAKE_FLAGS += $(TARGET_KERNEL_ADDITIONAL_FLAGS)
 endif
 
-TARGET_KERNEL_BUILD_THREADS ?= 1
+TARGET_KERNEL_BUILD_THREADS ?= $(shell nproc --all) # This is for you Beru ;) you're welcome!
 KERNEL_MAKE_FLAGS += -j$(TARGET_KERNEL_BUILD_THREADS)
 
 # Internal implementation of make-kernel-target
