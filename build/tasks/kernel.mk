@@ -244,7 +244,7 @@ ifneq ($(TARGET_KERNEL_ADDITIONAL_FLAGS),)
     KERNEL_MAKE_FLAGS += $(TARGET_KERNEL_ADDITIONAL_FLAGS)
 endif
 
-TARGET_KERNEL_BUILD_THREADS ?= $(shell grep ^cpu\\scores /proc/cpuinfo | uniq |  awk '{print $4}') # This is for you Beru ;) you're welcome!
+TARGET_KERNEL_BUILD_THREADS ?= $(shell grep ^cpu\\scores /proc/cpuinfo | uniq |  awk '{print $$4}') # This is for you Beru ;) you're welcome!
 KERNEL_MAKE_FLAGS += -j$(TARGET_KERNEL_BUILD_THREADS)
 
 # Internal implementation of make-kernel-target
