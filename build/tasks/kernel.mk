@@ -503,7 +503,7 @@ ifneq ($(BOARD_CUSTOM_DTBOIMG_MK),)
 include $(BOARD_CUSTOM_DTBOIMG_MK)
 else
 MKDTIMG := $(HOST_OUT_EXECUTABLES)/mkdtimg$(HOST_EXECUTABLE_SUFFIX)
-MKDTBOIMG := $(HOST_OUT_EXECUTABLES)/mkdtboimg.py$(HOST_EXECUTABLE_SUFFIX)
+MKDTBOIMG := prebuilts/kernel-build-tools/linux-x86/bin/mkdtboimg.py$(HOST_EXECUTABLE_SUFFIX)
 
 $(DTBO_OUT):
 	mkdir -p $(DTBO_OUT)
