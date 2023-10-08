@@ -5,7 +5,5 @@
 -->
 <resources>
 
-    <!-- Manufacturer backup settings label -->
-    <string name="config_backup_settings_label" msgid="1623475653989899715">@string/backup_transport_setting_label</string>
 
 </resources>
