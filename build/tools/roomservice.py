@@ -337,7 +337,6 @@ def get_default_or_fallback_revision(repo_name):
     print("Branches found:")
     for branch in [branch['name'] for branch in result]:
         print(branch)
-    print("Use the ROOMSERVICE_BRANCHES environment variable to specify a list of fallback branches.")
     sys.exit()
 
 if depsonly:
