@@ -43,7 +43,8 @@ from xml.etree import ElementTree
 org_git = "git.halogenos.org"
 org_manifest = "XOS"
 org_display = "halogenOS"
-custom_default_revision = "XOS-13.0"
+custom_default_revision = "XOS-14.0"
+custom_default_fallback_revisions = ["XOS-13.0"]
 product = sys.argv[1]
 
 if len(sys.argv) > 2:
@@ -325,7 +326,7 @@ def get_default_or_fallback_revision(repo_name):
     if has_branch(result, default_revision):
         return default_revision
 
-    fallbacks = [ custom_default_revision ]
+    fallbacks = custom_default_fallback_revisions
 
     for fallback in fallbacks:
         if has_branch(result, fallback):
