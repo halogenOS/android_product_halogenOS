@@ -54,10 +54,6 @@ endif
 PRODUCT_COPY_FILES += \
     $(CUSTOM_PRODUCT_DIR)/config/permissions/aosp-sysconfig.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/aosp-sysconfig.xml
 
-# Enable Android Beam on all targets
-PRODUCT_COPY_FILES += \
-    $(CUSTOM_PRODUCT_DIR)/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.software.nfc.beam.xml
-
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.software.sip.voip.xml
