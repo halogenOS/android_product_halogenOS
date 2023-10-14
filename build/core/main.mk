@@ -4,3 +4,4 @@ $(shell echo "$(CUSTOM_PRODUCT) product activated, dir: $(CUSTOM_PRODUCT_DIR)" >
 endif
 
 include $(CUSTOM_PRODUCT_DIR)/config/branding.mk
+include $(CUSTOM_PRODUCT_DIR)/config/additional_props.mk
