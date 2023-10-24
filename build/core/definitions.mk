@@ -6,5 +6,3 @@ endef
 # Include board/platform macros
 include $(CUSTOM_PRODUCT_DIR)/build/core/utils.mk
 
-# Include vendor platform definitions
-include $(CUSTOM_PRODUCT_DIR)/build/core/vendor/*.mk
