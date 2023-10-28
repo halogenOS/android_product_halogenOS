@@ -243,6 +243,7 @@ def fetch_dependencies(repo_path):
     is_lineage = False
     is_crdroid = False
     is_arrow = False
+    is_yaap = False
 
     dependencies_path = repo_path + '/aosp.dependencies'
     if not os.path.exists(dependencies_path):
@@ -255,8 +256,13 @@ def fetch_dependencies(repo_path):
                 # ArrowOS-Devices dependencies
                 dependencies_path = repo_path + "/arrow.dependencies"
                 if not os.path.exists(dependencies_path):
-                    print("No additional dependencies for %s" % repo_path)
-                    return
+                    # YAAP dependencies
+                    dependencies_path = repo_path + "/yaap.dependencies"
+                    if not os.path.exists(dependencies_path):
+                        print("No additional dependencies for %s" % repo_path)
+                        return
+                    else:
+                        is_yaap = True
                 else:
                     is_arrow = True
             else:
@@ -286,6 +292,10 @@ def fetch_dependencies(repo_path):
 
             elif is_arrow:
                 print("Detected ArrowOS repository %s, no conversion needed" % dependency["repository"])
+                dependency['repository'] = "android_%" % (dependency['repository'])
+
+            elif is_yaap:
+                print("Detected YAAP repository %s, converting" % dependency('repository'))
 
             print("Dependency repository: %s" % dependency['repository'])
             fetch_list.append(dependency)
