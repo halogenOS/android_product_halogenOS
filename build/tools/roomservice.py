@@ -323,6 +323,36 @@ def fetch_dependencies(repo_path):
 def has_branch(branches, revision):
     return revision in [branch['name'] for branch in branches]
 
+def get_latest_branch(branches, revision):
+    branch_names = [branch['name'] for branch in branches]
+
+    # Define a custom sorting function to extract the version number
+    def extract_version(branch_name):
+        # Assuming the format is "XOS-X.X.X"
+        match = re.match(r'^([A-Z]+-\d+\.\d+(\.\d+)?)$', branch_name)
+        if match:
+            return list(map(int, match.group(1).split('-')[1].split('.')))
+        return []
+
+    # Filter branches that match the provided revision and have the correct format
+    matching_branches = [branch for branch in branch_names if branch.startswith(revision) and extract_version(branch)]
+
+    if matching_branches:
+        # Find the latest branch based on version number
+        latest_branch = max(matching_branches, key=extract_version)
+    else:
+        # If there are no matching branches with a specific version, use the less specific branch
+        # For example, if "XOS-14.0" is present but not "XOS-14.0.1"
+        less_specific_revision = revision.rsplit('-', 1)[0]
+        matching_branches = [branch for branch in branch_names if branch.startswith(less_specific_revision) and extract_version(branch)]
+        if matching_branches:
+            latest_branch = max(matching_branches, key=extract_version)
+        else:
+            latest_branch = None  # No matching branches found
+
+    return latest_branch
+
+
 def get_default_or_fallback_revision(repo_name):
     default_revision = custom_default_revision
     print("Default revision: %s" % default_revision)
@@ -334,7 +364,7 @@ def get_default_or_fallback_revision(repo_name):
     result = json.loads(urllib.request.urlopen(req).read().decode())
 
     if has_branch(result, default_revision):
-        return default_revision
+        return get_latest_branch(result, default_revision)
 
     fallbacks = custom_default_fallback_revisions
 
