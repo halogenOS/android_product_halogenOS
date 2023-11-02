@@ -41,7 +41,7 @@
 
     <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->
     <string name="quick_settings_tiles_stock" translatable="false">
-        wifi,cell,internet,bt,dnd,flashlight,rotation,airplane,alarm,hotspot,caffeine,mictoggle,cameratoggle,wallet,controls,battery,cast,screenrecord,location,inversion,saver,dark,work,night,reverse,reduce_brightness,qr_code_scanner,onehanded,color_correction,dream,font_scaling
+        wifi,cell,internet,bt,dnd,flashlight,rotation,airplane,alarm,hotspot,caffeine,mictoggle,cameratoggle,wallet,controls,battery,cast,screenrecord,location,inversion,saver,dark,work,night,reduce_brightness,qr_code_scanner,onehanded,color_correction,dream,font_scaling
     </string>
 
     <integer name="heads_up_notification_decay">4400</integer>
