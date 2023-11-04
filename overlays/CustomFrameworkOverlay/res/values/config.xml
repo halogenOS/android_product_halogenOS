@@ -155,11 +155,6 @@
     -->
     <integer name="config_keyChordPowerVolumeUp">1</integer>
 
-    <!-- Whether this device is supporting the microphone toggle -->
-    <bool name="config_supportsMicToggle">true</bool>
-    <!-- Whether this device is supporting the camera toggle -->
-    <bool name="config_supportsCamToggle">true</bool>
-
     <!--
         Control the default night mode to use when there is no other mode override set.
         One of the following values (see UiModeManager.java):
@@ -168,9 +163,6 @@
             2 - MODE_NIGHT_YES
     -->
     <integer name="config_defaultNightMode">2</integer>
-
-    <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently in hardware. -->
-    <bool name="config_setColorTransformAccelerated">true</bool>
 
     <!--
         The default value used for RawContacts.ACCOUNT_NAME when contacts are inserted without this
@@ -211,7 +203,4 @@
 
     <string name="config_defaultQrCodeComponent" translatable="false">org.lineageos.aperture/.QrScannerActivity</string>
 
-    <!-- The type of the light sensor to be used by the display framework for things like
-         auto-brightness. If unset, then it just gets the default sensor of type TYPE_LIGHT. -->
-    <string name="config_displayLightSensorType" translatable="false">android.sensor.light</string>
 </resources>
