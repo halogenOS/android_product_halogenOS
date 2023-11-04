@@ -14,7 +14,6 @@ if [[ "$CUSTOM_PRODUCT" == "$this_product_name" ]]; then
 
     export TOP="$(pwd)"
 
-    export CUSTOM_PRODUCT_DIR="$CUSTOM_PRODUCT_DIR"
     # Please use CUSTOM_PRODUCT_DIR instead of CUSTOM_VENDOR_DIR
     # We are not a vendor, but a product. We don't sell products, we are the product.
     # See https://source.android.com/docs/core/architecture/bootloader/partitions/odm-partitions#maintain-ABIs
