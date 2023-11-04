@@ -155,14 +155,6 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     dalvik.vm.systemuicompilerfilter=speed
 
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(CUSTOM_PRODUCT_DIR)/overlay/no-rro
-PRODUCT_PACKAGE_OVERLAYS += \
-    $(CUSTOM_PRODUCT_DIR)/overlay/common \
-    $(CUSTOM_PRODUCT_DIR)/overlay/no-rro
-
-PRODUCT_PACKAGES += \
-    NetworkStackOverlay
-
 # Permissions
 PRODUCT_COPY_FILES += \
     $(CUSTOM_PRODUCT_DIR)/config/permissions/privapp-permissions-custom.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-custom.xml
