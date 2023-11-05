@@ -7,11 +7,11 @@ PRODUCT_PACKAGES += \
     CustomSettingsProviderOverlay \
     CustomSetupDesignOverlay \
     CustomSystemUIOverlay \
+    CustomThemePickerOverlay \
     CustomVoicemailOverlay \
     CustomNetworkStackOverlay
 
 PRODUCT_PACKAGES += \
-    CustomBlueAccent \
-    CustomBlackTheme \
+    CustomBlackBlueAccent \
     CustomThemesStub
 
