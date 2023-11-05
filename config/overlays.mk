@@ -12,6 +12,6 @@ PRODUCT_PACKAGES += \
     CustomNetworkStackOverlay
 
 PRODUCT_PACKAGES += \
-    CustomBlackBlueAccent \
+    CustomBlackTheme \
     CustomThemesStub
 
