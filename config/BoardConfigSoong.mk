@@ -35,6 +35,7 @@ SOONG_CONFIG_customGlobalVars += \
     bootloader_message_offset \
     gralloc_handle_has_custom_content_md_reserved_size \
     gralloc_handle_has_reserved_size \
+    sdmcore_has_is_display_hw_available_func \
     target_init_vendor_lib \
     target_ld_shim_libs \
     target_surfaceflinger_udfps_lib \
@@ -64,6 +65,7 @@ endif
 # Soong bool variables
 SOONG_CONFIG_customGlobalVars_gralloc_handle_has_custom_content_md_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE)
 SOONG_CONFIG_customGlobalVars_gralloc_handle_has_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE)
+SOONG_CONFIG_customGlobalVars_sdmcore_has_is_display_hw_available_func := $(TARGET_SDMCORE_HAS_IS_DISPLAY_HW_AVAILABLE_FUNC)
 SOONG_CONFIG_customGlobalVars_uses_egl_display_array := $(TARGET_USES_EGL_DISPLAY_ARRAY)
 SOONG_CONFIG_customNvidiaVars_uses_nvidia_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
 SOONG_CONFIG_customQcomVars_qti_vibrator_use_effect_stream := $(TARGET_QTI_VIBRATOR_USE_EFFECT_STREAM)
@@ -80,6 +82,7 @@ TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE ?= false
 TARGET_GRALLOC_HANDLE_HAS_UBWCP_FORMAT ?= false
 TARGET_INIT_VENDOR_LIB ?= vendor_init
 TARGET_QTI_VIBRATOR_EFFECT_LIB ?= libqtivibratoreffect
+TARGET_SDMCORE_HAS_IS_DISPLAY_HW_AVAILABLE_FUNC ?= true
 TARGET_SURFACEFLINGER_UDFPS_LIB ?= surfaceflinger_udfps_lib
 TARGET_TRUST_USB_CONTROL_PATH ?= /proc/sys/kernel/deny_new_usb
 TARGET_TRUST_USB_CONTROL_ENABLE ?= 1
