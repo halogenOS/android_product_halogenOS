@@ -203,4 +203,5 @@
 
     <string name="config_defaultQrCodeComponent" translatable="false">org.lineageos.aperture/.QrScannerActivity</string>
 
+    <bool name="config_safe_media_volume_enabled">false</bool>
 </resources>
