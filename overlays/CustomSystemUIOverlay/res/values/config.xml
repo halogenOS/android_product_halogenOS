@@ -53,4 +53,6 @@
     <string-array name="config_statusBarIconsToExclude" translatable="false">
         <item>@*android:string/status_bar_rotate</item>
     </string-array>
+
+    <bool name="config_enableLockScreenRotation">false</bool>
 </resources>
