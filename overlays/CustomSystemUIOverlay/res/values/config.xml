@@ -55,4 +55,12 @@
     </string-array>
 
     <bool name="config_enableLockScreenRotation">false</bool>
+
+    <integer-array name="config_notification_snooze_times">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>1440</item>
+    </integer-array>
 </resources>
