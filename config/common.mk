@@ -166,5 +166,8 @@ PRODUCT_PACKAGES += \
 # Predictive back by default
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.wm.debug.predictive_back_sysui_enable=1
 
+# Disable Storage Manger by default
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.storage_manager.enabled=0
+
 include $(CUSTOM_PRODUCT_DIR)/config/apps.mk
 include $(CUSTOM_PRODUCT_DIR)/config/overlays.mk
