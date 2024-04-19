@@ -244,6 +244,7 @@ def fetch_dependencies(repo_path):
     is_crdroid = False
     is_arrow = False
     is_yaap = False
+    is_pixys = False
 
     dependencies_path = repo_path + '/aosp.dependencies'
     if not os.path.exists(dependencies_path):
@@ -259,8 +260,13 @@ def fetch_dependencies(repo_path):
                     # YAAP dependencies
                     dependencies_path = repo_path + "/yaap.dependencies"
                     if not os.path.exists(dependencies_path):
-                        print("No additional dependencies for %s" % repo_path)
-                        return
+                        # Pixys dependencies
+                        dependencies_path = repo_path + "/pixys.dependencies"
+                        if not os.path.exists(dependencies_path):
+                            print("No additional dependencies for %s" % repo_path)
+                            return
+                        else:
+                            is_pixys = True
                     else:
                         is_yaap = True
                 else:
@@ -291,11 +297,15 @@ def fetch_dependencies(repo_path):
                 dependency['repository'] = dependency['repository'].removeprefix("LineageOS/")
 
             elif is_arrow:
-                print("Detected ArrowOS repository %s, no conversion needed" % dependency["repository"])
+                print("Detected ArrowOS repository %s, converting" % dependency["repository"])
+                dependency['repository'] = "android_%" % (dependency['repository'])
+
+            elif is_pixys:
+                print("Detected PixysOS repository %s, converting" % dependency["repository"])
                 dependency['repository'] = "android_%" % (dependency['repository'])
 
             elif is_yaap:
-                print("Detected YAAP repository %s, converting" % dependency('repository'))
+                print("Detected YAAP repository %s, no conversion needed" % dependency('repository'))
 
             print("Dependency repository: %s" % dependency['repository'])
             fetch_list.append(dependency)
