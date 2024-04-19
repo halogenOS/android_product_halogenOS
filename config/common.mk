@@ -163,5 +163,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0.vendor
 
+# Predictive back by default
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.wm.debug.predictive_back_sysui_enable=1
+
 include $(CUSTOM_PRODUCT_DIR)/config/apps.mk
 include $(CUSTOM_PRODUCT_DIR)/config/overlays.mk
