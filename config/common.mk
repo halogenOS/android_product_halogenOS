@@ -135,10 +135,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(CUSTOM_PRODUCT_DIR)/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
 
-# Storage manager
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.storage_manager.enabled=true
-
 # These packages are excluded from user builds
 PRODUCT_PACKAGES_DEBUG += \
     procmem
@@ -167,7 +163,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.wm.debug.predictive_back_sysui_enable=1
 
 # Disable Storage Manger by default
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.storage_manager.enabled=0
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.storage_manager.enabled=false
 
 include $(CUSTOM_PRODUCT_DIR)/config/apps.mk
 include $(CUSTOM_PRODUCT_DIR)/config/overlays.mk
