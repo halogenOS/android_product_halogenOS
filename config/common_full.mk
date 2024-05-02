@@ -7,6 +7,9 @@ PRODUCT_SIZE := full
 $(call inherit-product-if-exists, external/google-fonts/lato/fonts.mk)
 $(call inherit-product-if-exists, external/google-fonts/rubik/fonts.mk)
 
+# Battery
+PRODUCT_PACKAGES += BatteryChargeLimiter
+
 # Fonts
 PRODUCT_PACKAGES += \
     fonts_customization.xml \
