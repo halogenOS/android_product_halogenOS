@@ -165,5 +165,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.wm.debug.predictive_back_sysui_enab
 # Disable Storage Manger by default
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.storage_manager.enabled=false
 
+# Signing
+-include vendor/$(CUSTOM_PRODUCT)/private/keys/keys.mk
+
 include $(CUSTOM_PRODUCT_DIR)/config/apps.mk
 include $(CUSTOM_PRODUCT_DIR)/config/overlays.mk
