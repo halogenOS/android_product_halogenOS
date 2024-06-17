@@ -207,6 +207,7 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 include $(CUSTOM_PRODUCT_DIR)/config/version.mk
 
 -include $(CUSTOM_PRODUCT_DIR)-priv/keys/keys.mk
+-include vendor/$(CUSTOM_PRODUCT)/private/keys/keys.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include $(CUSTOM_PRODUCT_DIR)/config/partner_gms.mk
