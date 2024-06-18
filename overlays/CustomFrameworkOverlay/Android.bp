@@ -16,5 +16,5 @@
 runtime_resource_overlay {
     name: "CustomFrameworkOverlay",
     sdk_version: "current",
-    product_specific: true,
+    system_ext_specific: true,
 }
