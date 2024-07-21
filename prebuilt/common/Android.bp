@@ -2,5 +2,6 @@ prebuilt_etc_xml {
     name: "apns-conf.xml",
     product_specific: true,
     src: "etc/apns-conf.xml",
+    schema: ":apns-conf-schema",
 }
 
