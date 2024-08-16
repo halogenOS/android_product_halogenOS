@@ -168,5 +168,11 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.storage_manager.enabled=false
 # Signing
 -include vendor/$(CUSTOM_PRODUCT)/private/keys/keys.mk
 
+ifeq ($(PRODUCT_DEFAULT_AVB_KEY),)
+PRODUCT_DEFAULT_AVB_KEY := external/avb/test/data/testkey_rsa4096.pem
+else
+$(shell echo Using AVB key $(PRODUCT_DEFAULT_AVB_KEY) >&2)
+endif
+
 include $(CUSTOM_PRODUCT_DIR)/config/apps.mk
 include $(CUSTOM_PRODUCT_DIR)/config/overlays.mk
