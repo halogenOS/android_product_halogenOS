@@ -43,7 +43,7 @@ from xml.etree import ElementTree
 org_git = "git.halogenos.org"
 org_manifest = "XOS"
 org_display = "halogenOS"
-custom_default_revision = "XOS-14.0"
+custom_default_revision = "XOS-15.0"
 custom_default_fallback_revisions = ["XOS-13.0"]
 product = sys.argv[1]
 
@@ -352,7 +352,7 @@ def get_latest_branch(branches, revision):
         latest_branch = max(matching_branches, key=extract_version)
     else:
         # If there are no matching branches with a specific version, use the less specific branch
-        # For example, if "XOS-14.0" is present but not "XOS-14.0.1"
+        # For example, if "XOS-15.0" is present but not "XOS-15.0.1"
         less_specific_revision = revision.rsplit('-', 1)[0]
         matching_branches = [branch for branch in branch_names if branch.startswith(less_specific_revision) and extract_version(branch)]
         if matching_branches:
