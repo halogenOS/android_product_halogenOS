@@ -380,8 +380,9 @@ def get_default_or_fallback_revision(repo_name):
 
     for fallback in fallbacks:
         if has_branch(result, fallback):
-            print("Using fallback branch: %s" % fallback)
-            return fallback
+            latest_fallback = get_latest_branch(result, fallback)
+            print("Using fallback branch: %s" % latest_fallback)
+            return latest_fallback
 
     print("Default revision %s not found in %s. Bailing." % (default_revision, repo_name))
     print("Branches found:")
