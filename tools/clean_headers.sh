@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eu
 
 export ANDROID_BUILD_TOP="$PWD"
