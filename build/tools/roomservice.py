@@ -305,7 +305,7 @@ def fetch_dependencies(repo_path):
                 dependency['repository'] = "android_%" % (dependency['repository'])
 
             elif is_yaap:
-                print("Detected YAAP repository %s, no conversion needed" % dependency('repository'))
+                print("Detected YAAP repository %s, no conversion needed" % dependency['repository'])
 
             print("Dependency repository: %s" % dependency['repository'])
             fetch_list.append(dependency)
