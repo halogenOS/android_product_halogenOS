@@ -44,7 +44,7 @@ org_git = "git.halogenos.org"
 org_manifest = "XOS"
 org_display = "halogenOS"
 custom_default_revision = "XOS-15.0"
-custom_default_fallback_revisions = ["XOS-13.0"]
+custom_default_fallback_revisions = ["XOS-13.0", "XOS-14.0"]
 product = sys.argv[1]
 
 if len(sys.argv) > 2:
