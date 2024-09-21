@@ -23,6 +23,9 @@ if [[ "$CUSTOM_PRODUCT" == "$this_product_name" ]]; then
                             (repo branch | grep '^\*' | awk '{ print $2 }') )"
 fi
 
+export KEYS_DIR="vendor/halogenOS/private/keys"
+export KEYS_SUBJECT="/C=DE/ST=Bavaria/L=Swabia/O=The halogenOS Project/OU=halogenOS Team/CN=halogenOS/emailAddress=contact@halogenos.org"
+
 breakfast() {
     if [ -z "$1" ]; then
         echo "Please specify a device"
