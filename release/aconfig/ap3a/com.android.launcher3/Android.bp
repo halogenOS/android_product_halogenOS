@@ -1,0 +1,5 @@
+aconfig_values {
+  name: "aconfig-values-ap3a-com.android.launcher3.flags-all",
+  package: "com.android.launcher3",
+  srcs: ["*_flag_values.textproto"]
+}
