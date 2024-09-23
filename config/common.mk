@@ -28,6 +28,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
 endif
 
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.device_config.configuration.disable_rescue_party=true
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     $(CUSTOM_PRODUCT_DIR)/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
