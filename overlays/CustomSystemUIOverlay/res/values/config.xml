@@ -63,4 +63,10 @@
         <item>120</item>
         <item>1440</item>
     </integer-array>
+
+    <integer name="config_udfpsDeviceEntryIconLongPress">80</integer>
+    <integer name="config_lockIconLongPress">100</integer>
+    <integer name="config_dialogHideAnimationDurationMs">240</integer>
+    <integer name="config_dialogShowAnimationDurationMs">300</integer>
+    <bool name="custom_lockscreen_shortcuts_enabled">true</bool>
 </resources>

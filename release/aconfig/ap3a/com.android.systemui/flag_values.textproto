@@ -1,0 +1,252 @@
+flag_value {
+  package: "com.android.systemui"
+  name: "udfps_view_performance"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "notifications_footer_view_refactor"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "notifications_icon_container_refactor"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "notifications_improved_hun_animation"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "notification_content_alpha_optimization"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "pss_app_selector_abrupt_exit_fix"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "notifications_background_icons"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "keyguard_bottom_area_refactor"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "device_entry_udfps_refactor"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "unfold_animation_background_progress"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "enable_background_keyguard_ondrawn_callback"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "coroutine_tracing"
+  state: DISABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "edge_back_gesture_handler_thread"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "new_aod_transition"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "light_reveal_migration"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "truncated_status_bar_icons_fix"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "status_bar_monochrome_icons_fix"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "status_bar_screen_sharing_chips"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "compose_bouncer"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "revamped_bouncer_messages"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "rest_to_unlock"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "migrate_clocks_to_blueprint"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "fast_unlock_transition"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "activity_transition_use_largest_window"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "centralized_status_bar_height_fix"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "enable_layout_tracing"
+  state: DISABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "quick_settings_visual_haptics_longpress"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "new_volume_panel"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "screenshot_shelf_ui2"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "run_fingerprint_detect_on_dismissible_keyguard"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "compose_lockscreen"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "enable_contextual_tips"
+  state: DISABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "shaderlib_loading_effect_refactor"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "media_controls_refactor"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "qs_ui_refactor"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "enable_efficient_display_repository"
+  state: ENABLED
+  permission: READ_ONLY
+}
+

@@ -20,4 +20,21 @@
 
     <!-- Remove power menu shadow -->
     <dimen name="global_actions_translate">0dp</dimen>
+
+    <dimen name="scroll_fast_threshold">1480dp</dimen>
+    <dimen name="keyguard_drag_down_min_distance">92dp</dimen>
+    <dimen name="volume_row_slider_height">160dp</dimen>
+    <integer name="wireless_charging_battery_level_text_opacity_duration">96</integer>
+    <integer name="wireless_charging_battery_level_text_scale_animation_duration">340</integer>
+    <integer name="wireless_charging_fade_offset">896</integer>
+    <integer name="wireless_charging_fade_duration">160</integer>
+    <dimen name="qs_media_seekbar_progress_wavelength">56dp</dimen>
+    <dimen name="qs_media_seekbar_progress_phase">16dp</dimen>
+    <dimen name="qs_media_seekbar_progress_amplitude">1dp</dimen>
+    <dimen name="controls_header_bottom_margin">8dp</dimen>
+    <dimen name="controls_header_app_icon_size">32dp</dimen>
+    <dimen name="control_menu_item_height">54dp</dimen>
+    <dimen name="control_corner_radius">16dp</dimen>
+    <dimen name="control_height">96dp</dimen>
+    <dimen name="controls_panel_corner_radius">36dp</dimen>
 </resources>
