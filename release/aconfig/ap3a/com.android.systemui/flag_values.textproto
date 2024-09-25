@@ -236,3 +236,31 @@ flag_value {
   permission: READ_ONLY
 }
 
+flag_value {
+  package: "com.android.systemui"
+  name: "predictive_back_sysui"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "predictive_back_animate_shade"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "predictive_back_animate_bouncer"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.systemui"
+  name: "predictive_back_animate_dialogs"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
