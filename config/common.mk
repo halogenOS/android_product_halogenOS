@@ -181,3 +181,5 @@ endif
 
 include $(CUSTOM_PRODUCT_DIR)/config/apps.mk
 include $(CUSTOM_PRODUCT_DIR)/config/overlays.mk
+
+PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard $(CUSTOM_PRODUCT_DIR)/release/release_config_map.mk)
