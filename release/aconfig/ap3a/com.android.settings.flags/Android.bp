@@ -16,6 +16,6 @@ aconfig_values {
   name: "aconfig-values-ap3a-com.android.settings.flags.flags-all",
   package: "com.android.settings.flags",
   srcs: [
-    "*_flag_values.textproto",
+    "flag_values.textproto",
   ]
 }

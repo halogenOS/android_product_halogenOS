@@ -1,0 +1,5 @@
+aconfig_values {
+  name: "aconfig-values-ap3a-com.android.egg.flags.flags-all",
+  package: "com.android.egg.flags",
+  srcs: ["flag_values.textproto"]
+}

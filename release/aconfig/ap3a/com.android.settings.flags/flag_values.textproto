@@ -1,0 +1,34 @@
+flag_value {
+  package: "com.android.settings.flags"
+  name: "homepage_revamp"
+  state: ENABLED
+  permission: READ_WRITE
+}
+
+flag_value {
+  package: "com.android.settings.flags"
+  name: "internet_preference_controller_v2"
+  state: ENABLED
+  permission: READ_WRITE
+}
+
+flag_value {
+  package: "com.android.settings.flags"
+  name: "new_apn_page_enabled"
+  state: ENABLED
+  permission: READ_WRITE
+}
+
+flag_value {
+  package: "com.android.settings.flags"
+  name: "refactor_print_settings"
+  state: ENABLED
+  permission: READ_WRITE
+}
+
+flag_value {
+  package: "com.android.settings.flags"
+  name: "thread_network"
+  state: ENABLED
+  permission: READ_WRITE
+}
