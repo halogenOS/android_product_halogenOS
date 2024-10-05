@@ -40,7 +40,7 @@ def generate_for(res_file: str, overlays_root: ElementTree.ElementTree):
         if should_map is not None and should_map != "true":
             continue
         item = ElementTree.Element("item", attrib={
-            "target": resource.get("name"),
+            "target": f"{resource.tag}/{resource.get('name')}",
             "value": f"@{resource.tag}/{resource.get('name')}",
         })
         overlays_root.append(item)
