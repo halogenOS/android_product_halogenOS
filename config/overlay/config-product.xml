@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
+    <overlay package="custom.overlay.com.android.documentsui" mutable="false" enabled="true" />
+    <overlay package="custom.overlay.android" mutable="false" enabled="true" />
+    <overlay package="custom.overlay.com.android.launcher3" mutable="false" enabled="true" />
+    <overlay package="custom.overlay.com.android.networkstack" mutable="false" enabled="true" />
+    <overlay package="custom.overlay.com.android.settings" mutable="false" enabled="true" />
+    <overlay package="custom.overlay.com.android.providers.settings" mutable="false" enabled="true" />
+    <overlay package="custom.overlay.com.google.android.setupdesign" mutable="false" enabled="true" />
+    <overlay package="custom.overlay.com.android.systemui" mutable="false" enabled="true" />
+    <overlay package="custom.overlay.com.android.wallpaper" mutable="false" enabled="true" />
+    <overlay package="custom.overlay.com.android.voicemail.impl" mutable="false" enabled="true" />
     <overlay package="custom.theme.black" mutable="true" enabled="false" />
+    <overlay package="customaosp.overlay.font.lato" mutable="true" enabled="false" />
+    <overlay package="customaosp.overlay.font.rubik" mutable="true" enabled="false" />
+    <overlay package="customaosp.overlay.font.sourcesanspro" mutable="true" enabled="false" />
+    <overlay package="com.android.theme.icon.pebble" mutable="true" enabled="false" />
+    <overlay package="com.android.theme.icon.roundedrect" mutable="true" enabled="false" />
+    <overlay package="com.android.theme.icon.square" mutable="true" enabled="false" />
+    <overlay package="com.android.theme.icon.squircle" mutable="true" enabled="false" />
+    <overlay package="com.android.theme.icon.taperedrect" mutable="true" enabled="false" />
+    <overlay package="com.android.theme.icon.teardrop" mutable="true" enabled="false" />
+    <overlay package="com.android.theme.icon.vessel" mutable="true" enabled="false" />
 </config>
