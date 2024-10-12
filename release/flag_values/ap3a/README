@@ -1,0 +1,6 @@
+Here's where you can put flag values that will override what's in build/release.
+
+This works because build/soong/cmd/release_config/release_config_lib/release_configs.go line 345
+walks through any "flag_values" directory for which a "release_configs" directory exists in the
+same parent, and that is brought into scope using the remaining machinery of 10000 files that
+make the release stuff work in the first place.
