@@ -24,4 +24,6 @@ BUILD_FINGERPRINT := $(PRODUCT_BRAND)/$(CUSTOM_DEVICE)/$(CUSTOM_DEVICE):$(PLATFO
 endif
 
 PRODUCT_PRODUCT_PROPERTIES += \
-	ro.custom.build.device.maintainer=$(RELEASE_DEVICE_MAINTAINERS)
+	ro.custom.build.device.maintainer=$(RELEASE_DEVICE_MAINTAINERS) \
+	ro.custom.build.version.sp=$(RELEASE_PLATFORM_SECURITY_PATCH) \
+
