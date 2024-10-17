@@ -209,4 +209,6 @@
     <string name="config_defaultListenerAccessPackages" translatable="false">co.aospa.glyph</string>
 
     <bool name="config_defaultBatteryPercentageSetting">true</bool>
+
+    <bool name="config_dt2sGestureEnabledByDefault">true</bool>
 </resources>
