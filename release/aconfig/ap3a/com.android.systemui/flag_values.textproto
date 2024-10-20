@@ -57,7 +57,7 @@ flag_value {
 flag_value {
   package: "com.android.systemui"
   name: "device_entry_udfps_refactor"
-  state: DISABLED
+  state: ENABLED
   permission: READ_ONLY
 }
 
