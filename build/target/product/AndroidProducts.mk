@@ -16,6 +16,11 @@
 #
 
 PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/aosp_cf_car_arm64.mk \
+    $(LOCAL_DIR)/aosp_cf_car_x86_64.mk \
+    $(LOCAL_DIR)/aosp_cf_phone_arm64.mk \
+    $(LOCAL_DIR)/aosp_cf_phone_x86_64.mk \
+    $(LOCAL_DIR)/aosp_cf_tv_x86_64.mk \
     $(LOCAL_DIR)/aosp_gsi_arm.mk \
     $(LOCAL_DIR)/aosp_gsi_arm64.mk \
     $(LOCAL_DIR)/aosp_gsi_x86.mk \
@@ -35,6 +40,11 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/aosp_sdk_tv_x86_64.mk
 
 COMMON_LUNCH_CHOICES := \
+    aosp_cf_car_arm64-userdebug \
+    aosp_cf_car_x86_64-userdebug \
+    aosp_cf_phone_arm64-userdebug \
+    aosp_cf_phone_x86_64-userdebug \
+    aosp_cf_tv_x86_64-userdebug \
     aosp_gsi_arm-userdebug \
     aosp_gsi_arm64-userdebug \
     aosp_gsi_x86-userdebug \
