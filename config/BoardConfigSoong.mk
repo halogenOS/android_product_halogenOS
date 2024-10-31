@@ -38,7 +38,6 @@ SOONG_CONFIG_customGlobalVars += \
     gralloc_handle_has_custom_content_md_reserved_size \
     gralloc_handle_has_reserved_size \
     gralloc_handle_has_ubwcp_format \
-    target_health_charging_control_charging_path \
     target_health_charging_control_charging_enabled \
     target_health_charging_control_charging_disabled \
     target_health_charging_control_deadline_path \
@@ -58,6 +57,10 @@ SOONG_CONFIG_customGlobalVars += \
     uses_egl_display_array \
     with_selinux_permissive
 
+ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH),)
+SOONG_CONFIG_customGlobalVars += \
+    target_health_charging_control_charging_path
+endif
 SOONG_CONFIG_NAMESPACES += customNvidiaVars
 SOONG_CONFIG_customNvidiaVars += \
     uses_nvidia_enhancements
