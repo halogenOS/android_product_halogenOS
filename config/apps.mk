@@ -6,4 +6,5 @@ PRODUCT_PACKAGES += \
 	Glimpse \
 	Jelly \
 	Launcher3 \
-	Seedvault
+	Seedvault \
+	Wallpapers
