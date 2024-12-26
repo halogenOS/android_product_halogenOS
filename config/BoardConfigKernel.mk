@@ -160,7 +160,17 @@ ifneq ($(KERNEL_NO_GCC), true)
         endif
     endif
 
-    KERNEL_MAKE_FLAGS += CPATH="/usr/include:/usr/include/x86_64-linux-gnu" HOSTLDFLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib64 -L$(BUILD_TOP)/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/lib/gcc/x86_64-linux/4.8.3/ -fuse-ld=lld"
+    PREBUILTS_LIBGCC_DIR := $(BUILD_TOP)/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/lib/gcc/x86_64-linux/4.8.3
+    ifneq ($(LIBGCC_DIR),)
+        ADDITIONAL_LINK_DIRS := -L$(PREBUILTS_LIBGCC_DIR) -L$(LIBGCC_DIR)
+    else
+        ADDITIONAL_LINK_DIRS := -L$(PREBUILTS_LIBGCC_DIR)
+    endif
+    SYSROOT_ADDITION :=
+    ifneq ($(GCC_DIR),)
+	SYSROOT_ADDITION := --sysroot=$(GCC_DIR)
+    endif
+    KERNEL_MAKE_FLAGS += CPATH="/usr/include:/usr/include/x86_64-linux-gnu" HOSTLDFLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib64 $(ADDITIONAL_LINK_DIRS) $(SYSROOT_ADDITION) -fuse-ld=lld --rtlib=compiler-rt"
 
     ifeq ($(KERNEL_ARCH),arm64)
         # Add 32-bit GCC to PATH so that arm-linux-androidkernel-as is available for CONFIG_COMPAT_VDSO
