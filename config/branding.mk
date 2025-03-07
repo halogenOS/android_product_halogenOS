@@ -1,0 +1,47 @@
+
+CUSTOM_BUILD_TYPE ?= UNOFFICIAL
+
+CUSTOM_DEVICE := $(shell echo "$(TARGET_PRODUCT)" | cut -d '_' -f2-)
+
+ifeq ($(CUSTOM_SKIP_BUILD_DATE),)
+CUSTOM_BUILD_DATE := $(shell date -u +"%Y%m%d-%H%M%S" -d @$$(cat $(BUILD_DATETIME_FILE)))
+else
+CUSTOM_BUILD_DATE := 00000000-000000
+endif
+
+CUSTOM_PLATFORM_VERSION := $(shell echo $(ROM_VERSION) | cut -d '-' -f2)
+
+CUSTOM_VERSION := $(CUSTOM_PRODUCT_NAME)_$(CUSTOM_DEVICE)-$(CUSTOM_PLATFORM_VERSION)-$(CUSTOM_BUILD_DATE)-$(CUSTOM_BUILD_TYPE)
+
+CUSTOM_DISPLAY_VERSION := $(CUSTOM_PLATFORM_VERSION)
+
+# Build fingerprint
+ifeq ($(BUILD_FINGERPRINT),)
+BUILD_NUMBER_CUSTOM := $(shell date -u +%H%M)
+BUILD_FINGERPRINT := $(PRODUCT_BRAND)/$(CUSTOM_DEVICE)/$(CUSTOM_DEVICE):$(PLATFORM_VERSION)/$(BUILD_ID)/$(BUILD_NUMBER_CUSTOM):$(TARGET_BUILD_VARIANT)/$(BUILD_SIGNATURE_KEYS)
+endif
+
+define base64urlencode
+$(shell perl -e 'use MIME::Base64 qw(encode_base64url); print encode_base64url(@ARGV[0])' "$(subst ",\",$(1))")
+endef
+
+ifdef RELEASE_PLATFORM_SECURITY_PATCH_OVERRIDE
+  ifeq ($(shell [[ $(RELEASE_PLATFORM_SECURITY_PATCH) > $(RELEASE_PLATFORM_SECURITY_PATCH_OVERRIDE) ]] && echo -n 1),1)
+    CUSTOM_PLATFORM_SECURITY_PATCH := $(RELEASE_PLATFORM_SECURITY_PATCH)
+  else
+    CUSTOM_PLATFORM_SECURITY_PATCH := $(RELEASE_PLATFORM_SECURITY_PATCH_OVERRIDE)
+  endif
+else
+CUSTOM_PLATFORM_SECURITY_PATCH := $(RELEASE_PLATFORM_SECURITY_PATCH)
+endif
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.custom.build.device.maintainer=$(call base64urlencode,$(RELEASE_DEVICE_MAINTAINERS)) \
+    ro.custom.build.version.sp=$(CUSTOM_PLATFORM_SECURITY_PATCH)  \
+    ro.custom.version=$(CUSTOM_VERSION) \
+    ro.custom.build.version=$(CUSTOM_PLATFORM_VERSION) \
+    ro.custom.display.version=$(CUSTOM_DISPLAY_VERSION) \
+    ro.custom.build_type=$(CUSTOM_BUILD_TYPE) \
+
+PRODUCT_SYSTEM_PROPERTIES += \
+	ro.build.fingerprint?=$(BUILD_FINGERPRINT)

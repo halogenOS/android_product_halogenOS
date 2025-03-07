@@ -1,0 +1,11 @@
+name: "RELEASE_PLATFORM_SECURITY_PATCH_OVERRIDE"
+namespace: "android_UNKNOWN"
+description: "Used to override RELEASE_PLATFORM_SECURITY_PATCH, but only does so when the override is actually newer."
+value: {
+  string_value: ""
+}
+workflow: MANUAL
+containers: "product"
+containers: "system"
+containers: "system_ext"
+containers: "vendor"

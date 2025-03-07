@@ -1,0 +1,10 @@
+name: "RELEASE_DEVICE_MAINTAINERS"
+namespace: "android_UNKNOWN"
+description: "Used to specify who is maintaining the device-specific repositories"
+value: {
+  string_value: ""
+}
+workflow: MANUAL
+containers: "product"
+containers: "system_ext"
+containers: "vendor"

@@ -37,6 +37,8 @@ endif
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
 endif
 
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.device_config.configuration.disable_rescue_party=true
+
 ifneq ($(strip $(AB_OTA_PARTITIONS) $(AB_OTA_POSTINSTALL_CONFIG)),)
 ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -174,6 +176,12 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     dalvik.vm.systemuicompilerfilter=speed
 
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    $(CUSTOM_PRODUCT_DIR)/config/permissions/privapp-permissions-custom.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-custom.xml
+
+
 ifeq ($(TARGET_BUILD_VARIANT),userdebug)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     debug.sf.enable_transaction_tracing=false
@@ -218,5 +226,13 @@ else
 $(shell echo Using AVB key $(PRODUCT_DEFAULT_AVB_KEY) >&2)
 endif
 
--include $(WORKSPACE)/build_env/image-auto-bits.mk
--include $(CUSTOM_PRODUCT_DIR)/config/partner_gms.mk
+include $(CUSTOM_PRODUCT_DIR)/config/apps.mk
+include $(CUSTOM_PRODUCT_DIR)/config/overlays.mk
+
+PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard $(CUSTOM_PRODUCT_DIR)/release/release_config_map.mk)
+
+include $(CUSTOM_PRODUCT_DIR)/config/branding.mk
+
+ifeq ($(RELEASE_PLATFORM_SECURITY_PATCH),$(VENDOR_SECURITY_PATCH))
+$(shell echo "Note: Release platform security patch is the same as vendor security patch ($(RELEASE_PLATFORM_SECURITY_PATCH) == $(VENDOR_SECURITY_PATCH))" >&2)
+endif

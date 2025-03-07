@@ -1,0 +1,20 @@
+flag_value {
+  package: "com.android.settingslib.media.flags"
+  name: "enable_output_switcher_for_system_routing"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.settingslib.media.flags"
+  name: "remove_unnecessary_route_scanning"
+  state: ENABLED
+  permission: READ_ONLY
+}
+
+flag_value {
+  package: "com.android.settingslib.media.flags"
+  name: "use_playback_info_for_routing_controls"
+  state: ENABLED
+  permission: READ_ONLY
+}
