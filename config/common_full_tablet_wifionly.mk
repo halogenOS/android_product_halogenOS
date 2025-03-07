@@ -1,7 +1,7 @@
-# Inherit mobile full common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_mobile_full.mk)
+# Inherit mobile full common custom stuff
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/common_mobile_full.mk)
 
-# Inherit tablet common Lineage stuff
-$(call inherit-product, vendor/lineage/config/tablet.mk)
+# Inherit tablet common custom stuff
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/tablet.mk)
 
-$(call inherit-product, vendor/lineage/config/wifionly.mk)
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/wifionly.mk)

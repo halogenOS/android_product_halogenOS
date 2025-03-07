@@ -1,6 +1,4 @@
-# Copyright (C) 2015 The CyanogenMod Project
-#           (C) 2017-2018 The LineageOS Project
-#           (C) 2025 The halogenOS Project
+# Copyright (C) 2018-2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,5 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Rules for QCOM targets
-include $(TOPDIR)$(CUSTOM_PRODUCT_DIR)/build/core/qcom_target.mk
+include $(CUSTOM_PRODUCT_DIR)/build/target/product/custom_generic_car_target.mk
+
+$(call inherit-product, device/generic/car/emulator/aosp_car_emulator.mk)
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/sdk.mk)
+
+PRODUCT_NAME := custom_sdk_car_x86_64
+
+PRODUCT_SDK_ADDON_NAME := custom
+PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(LOCAL_PATH)/source.properties

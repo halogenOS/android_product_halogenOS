@@ -1,6 +1,4 @@
-# Copyright (C) 2015 The CyanogenMod Project
-#           (C) 2017-2018 The LineageOS Project
-#           (C) 2025 The halogenOS Project
+# Copyright (C) 2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,5 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Rules for QCOM targets
-include $(TOPDIR)$(CUSTOM_PRODUCT_DIR)/build/core/qcom_target.mk
+include $(CUSTOM_PRODUCT_DIR)/build/target/product/custom_generic_tv_target.mk
+
+$(call inherit-product, device/google/atv/products/sdk_atv_x86.mk)
+
+TARGET_KERNEL_USE := 6.1
+TARGET_NO_KERNEL_OVERRIDE := true
+
+# Enable mainline checking
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
+
+# Overrides
+PRODUCT_NAME := custom_sdk_tv_x86
+PRODUCT_MODEL := Custom Android TV SDK built for x86
+
+PRODUCT_SDK_ADDON_NAME := custom
+PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(LOCAL_PATH)/source.properties

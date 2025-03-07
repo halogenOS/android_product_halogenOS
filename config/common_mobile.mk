@@ -1,12 +1,12 @@
-# Inherit common mobile Lineage stuff
-$(call inherit-product, vendor/lineage/config/common.mk)
+# Inherit common mobile custom stuff
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/common.mk)
 
 # Include AOSP audio files
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage14.mk)
-include vendor/lineage/config/aosp_audio.mk
+include $(CUSTOM_PRODUCT_DIR)/config/aosp_audio.mk
 
 # Include Lineage audio files
-include vendor/lineage/config/lineage_audio.mk
+include $(CUSTOM_PRODUCT_DIR)/config/lineage_audio.mk
 
 # Default notification/alarm sounds
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -79,12 +79,7 @@ PRODUCT_PACKAGES += \
     IconShapeSquircleOverlay \
     IconShapeTaperedRectOverlay \
     IconShapeTeardropOverlay \
-    IconShapeVesselOverlay \
-    LineageNavigationBarNoHint
-
-# Legal
-PRODUCT_SYSTEM_PROPERTIES += \
-    ro.lineagelegal.url=https://lineageos.org/legal
+    IconShapeVesselOverlay
 
 # Media
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -109,6 +104,5 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
 
 # Themes
 PRODUCT_PACKAGES += \
-    LineageBlackTheme \
     ThemePicker \
     ThemesStub

@@ -1,6 +1,4 @@
-# Copyright (C) 2015 The CyanogenMod Project
-#           (C) 2017-2018 The LineageOS Project
-#           (C) 2025 The halogenOS Project
+# Copyright (C) 2018-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,5 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Rules for QCOM targets
-include $(TOPDIR)$(CUSTOM_PRODUCT_DIR)/build/core/qcom_target.mk
+$(call inherit-product, device/generic/common/gsi_arm.mk)
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+include $(CUSTOM_PRODUCT_DIR)/build/target/product/custom_generic_target.mk
+
+PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
+
+TARGET_NO_KERNEL_OVERRIDE := true
+
+PRODUCT_NAME := custom_gsi_arm
+
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=
