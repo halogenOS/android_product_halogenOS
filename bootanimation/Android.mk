@@ -1,6 +1,7 @@
 #
 # Copyright (C) 2016 The CyanogenMod Project
-#               2017-2024 The LineageOS Project
+#               2017-2019 The LineageOS Project
+#               2019-2022 The halogenOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,25 +18,23 @@
 
 TARGET_GENERATED_BOOTANIMATION := $(TARGET_OUT_INTERMEDIATES)/BOOTANIMATION/bootanimation.zip
 $(TARGET_GENERATED_BOOTANIMATION): INTERMEDIATES := $(call intermediates-dir-for,BOOTANIMATION,bootanimation)
-$(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP)
+$(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP) $(shell find $(CUSTOM_PRODUCT_DIR)/bootanimation/ -type f)
 	@echo "Building bootanimation.zip"
-	@rm -rf $(dir $@)
-	@mkdir -p $(INTERMEDIATES)
-	$(hide) tar xfp $(CUSTOM_PRODUCT_DIR)/bootanimation/bootanimation.tar -C $(INTERMEDIATES)
+	@rm -rf $(dir $@) $(INTERMEDIATES)
+	@mkdir -p $(dir $@) $(INTERMEDIATES)
+	$(hide) cp -R $(CUSTOM_PRODUCT_DIR)/bootanimation/frames/. $(INTERMEDIATES)
 	$(hide) if [ $(TARGET_SCREEN_HEIGHT) -lt $(TARGET_SCREEN_WIDTH) ]; then \
-	    IMAGEWIDTH=$(TARGET_SCREEN_HEIGHT); \
-	else \
 	    IMAGEWIDTH=$(TARGET_SCREEN_WIDTH); \
+	else \
+	    IMAGEHEIGHT=$(TARGET_SCREEN_HEIGHT); \
 	fi; \
-	IMAGESCALEWIDTH=$$IMAGEWIDTH; \
-	IMAGESCALEHEIGHT=$$(expr $$IMAGESCALEWIDTH / 3); \
-	if [ "$(TARGET_BOOTANIMATION_HALF_RES)" = "true" ]; then \
-	    IMAGEWIDTH="$$(expr "$$IMAGEWIDTH" / 2)"; \
-	fi; \
-	IMAGEHEIGHT=$$(expr $$IMAGEWIDTH / 3); \
-	RESOLUTION="$$IMAGEWIDTH"x"$$IMAGEHEIGHT"; \
-	prebuilts/tools-lineage/${HOST_OS}-x86/bin/mogrify -resize $$RESOLUTION -colors 256 $(INTERMEDIATES)/*/*.png; \
-	echo "$$IMAGESCALEWIDTH $$IMAGESCALEHEIGHT 60" > $(INTERMEDIATES)/desc.txt; \
+	MOGRIFY="prebuilts/tools-lineage/${HOST_OS}-x86/bin/mogrify"; \
+	RESOLUTION="$$IMAGEWIDTH"x"$$IMAGEHEIGHT" ; \
+	find $(INTERMEDIATES) -type f -iname '*.png' | xargs -n 1 -P 4 $$MOGRIFY -resize $$RESOLUTION -colors 250; \
+	FIRST_PNG_FILE="$$(find $(INTERMEDIATES) -type f -iname '*.png' | head -n1)"; \
+	SCALE_WIDTH="$$($$MOGRIFY -print %w $$FIRST_PNG_FILE)"; \
+	SCALE_HEIGHT="$$($$MOGRIFY -print %h $$FIRST_PNG_FILE)"; \
+	echo "$$SCALE_WIDTH $$SCALE_HEIGHT $$(cat $(CUSTOM_PRODUCT_DIR)/bootanimation/fps.txt)" > $(INTERMEDIATES)/desc.txt; \
 	cat $(CUSTOM_PRODUCT_DIR)/bootanimation/desc.txt >> $(INTERMEDIATES)/desc.txt
 	$(hide) $(SOONG_ZIP) -L 0 -o $@ -C $(INTERMEDIATES) -D $(INTERMEDIATES)
 
