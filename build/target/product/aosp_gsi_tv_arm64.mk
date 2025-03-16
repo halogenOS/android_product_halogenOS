@@ -15,10 +15,10 @@
 $(call inherit-product, build/target/product/gsi_release.mk)
 $(call inherit-product, device/google/atv/products/aosp_tv_arm64.mk)
 
-include $(CUSTOM_PRODUCT_DIR)/build/target/product/custom_generic_tv_target.mk
+include $(CUSTOM_PRODUCT_DIR)/build/target/product/aosp_generic_tv_target.mk
 
 TARGET_NO_KERNEL_OVERRIDE := true
 
-PRODUCT_NAME := custom_gsi_tv_arm64
+PRODUCT_NAME := aosp_gsi_tv_arm64
 
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=

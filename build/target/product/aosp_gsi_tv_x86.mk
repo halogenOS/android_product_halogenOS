@@ -14,9 +14,9 @@
 
 $(call inherit-product, device/google/atv/products/aosp_tv_x86.mk)
 
-include $(CUSTOM_PRODUCT_DIR)/build/target/product/custom_generic_tv_target.mk
+include $(CUSTOM_PRODUCT_DIR)/build/target/product/aosp_generic_tv_target.mk
 
-PRODUCT_NAME := custom_gsi_tv_x86
+PRODUCT_NAME := aosp_gsi_tv_x86
 
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=
 

@@ -14,7 +14,7 @@
 
 $(call inherit-product, device/generic/car/gsi_car_arm64.mk)
 
-include $(CUSTOM_PRODUCT_DIR)/build/target/product/custom_generic_car_target.mk
+include $(CUSTOM_PRODUCT_DIR)/build/target/product/aosp_generic_car_target.mk
 
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
@@ -26,4 +26,4 @@ PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/app/Home/Home.apk
 
-PRODUCT_NAME := custom_gsi_car_arm64
+PRODUCT_NAME := aosp_gsi_car_arm64

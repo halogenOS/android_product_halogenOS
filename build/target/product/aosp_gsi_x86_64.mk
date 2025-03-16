@@ -14,10 +14,10 @@
 
 $(call inherit-product, device/generic/common/gsi_x86_64.mk)
 
-include $(CUSTOM_PRODUCT_DIR)/build/target/product/custom_generic_target.mk
+include $(CUSTOM_PRODUCT_DIR)/build/target/product/aosp_generic_target.mk
 
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
 TARGET_NO_KERNEL_OVERRIDE := true
 
-PRODUCT_NAME := custom_gsi_x86_64
+PRODUCT_NAME := aosp_gsi_x86_64

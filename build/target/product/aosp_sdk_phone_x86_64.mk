@@ -14,7 +14,7 @@
 
 $(call inherit-product, device/generic/goldfish/64bitonly/product/sdk_phone64_x86_64.mk)
 
-include $(CUSTOM_PRODUCT_DIR)/build/target/product/custom_generic_target.mk
+include $(CUSTOM_PRODUCT_DIR)/build/target/product/aosp_generic_target.mk
 include device/generic/goldfish/board/kernel/x86_64.mk
 
 # Always build modules from source
@@ -24,7 +24,7 @@ PRODUCT_MODULE_BUILD_FROM_SOURCE := true
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
 
 # Overrides
-PRODUCT_NAME := custom_sdk_phone_x86_64
+PRODUCT_NAME := aosp_sdk_phone_x86_64
 PRODUCT_MODEL := Custom Android SDK built for x86_64
 
 PRODUCT_SDK_ADDON_NAME := custom

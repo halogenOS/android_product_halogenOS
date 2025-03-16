@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include $(CUSTOM_PRODUCT_DIR)/build/target/product/custom_generic_car_target.mk
+include $(CUSTOM_PRODUCT_DIR)/build/target/product/aosp_generic_car_target.mk
 
 $(call inherit-product, device/generic/car/emulator/aosp_car_emulator.mk)
 
@@ -20,7 +20,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/sdk.mk)
 
 TARGET_NO_KERNEL_OVERRIDE := true
 
-PRODUCT_NAME := custom_sdk_car_arm64
+PRODUCT_NAME := aosp_sdk_car_arm64
 
 PRODUCT_SDK_ADDON_NAME := custom
 PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(LOCAL_PATH)/source.properties

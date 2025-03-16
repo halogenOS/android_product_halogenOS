@@ -218,8 +218,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.storage_manager.enabled=false
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(CUSTOM_PRODUCT_DIR)/build/target/product/security/custom
 
-include $(CUSTOM_PRODUCT_DIR)/config/version.mk
-
 -include $(CUSTOM_PRODUCT_DIR)-priv/keys/keys.mk
 -include vendor/$(CUSTOM_PRODUCT)/private/keys/keys.mk
 
