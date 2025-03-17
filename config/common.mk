@@ -148,10 +148,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     rsync
 
-# Storage manager
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.storage_manager.enabled=true
-
 PRODUCT_COPY_FILES += \
     $(CUSTOM_PRODUCT_DIR)/prebuilt/common/etc/init/init.custom.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.custom.rc
 
@@ -191,11 +187,6 @@ endif
 PRODUCT_PRODUCT_PROPERTIES += \
     setupwizard.theme=glif_v4 \
     setupwizard.feature.day_night_mode_enabled=true
-
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(CUSTOM_PRODUCT_DIR)/overlay/no-rro
-PRODUCT_PACKAGE_OVERLAYS += \
-    $(CUSTOM_PRODUCT_DIR)/overlay/common \
-    $(CUSTOM_PRODUCT_DIR)/overlay/no-rro
 
 PRODUCT_PACKAGES += \
     DocumentsUIOverlay \
