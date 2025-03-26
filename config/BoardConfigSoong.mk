@@ -58,9 +58,6 @@ SOONG_CONFIG_customGlobalVars += \
     target_health_charging_control_charging_path
 endif
 
-SOONG_CONFIG_NAMESPACES += customNvidiaVars
-SOONG_CONFIG_customNvidiaVars += \
-    uses_nvidia_enhancements
 
 # Soong bool variables
 SOONG_CONFIG_customGlobalVars_camera_override_format_from_reserved := $(TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED)
@@ -68,7 +65,6 @@ SOONG_CONFIG_customGlobalVars_gralloc_handle_has_custom_content_md_reserved_size
 SOONG_CONFIG_customGlobalVars_gralloc_handle_has_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE)
 SOONG_CONFIG_customGlobalVars_gralloc_handle_has_ubwcp_format := $(TARGET_GRALLOC_HANDLE_HAS_UBWCP_FORMAT)
 SOONG_CONFIG_customGlobalVars_uses_egl_display_array := $(TARGET_USES_EGL_DISPLAY_ARRAY)
-SOONG_CONFIG_customNvidiaVars_uses_nvidia_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
 SOONG_CONFIG_customGlobalVars_with_selinux_permissive := $(WITH_SELINUX_PERMISSIVE)
 
 # Set default values
