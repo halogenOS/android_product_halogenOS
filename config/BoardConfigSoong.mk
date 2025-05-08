@@ -16,90 +16,72 @@ EXPORT_TO_SOONG := \
 # Documentation here:
 # https://github.com/LineageOS/android_build_soong/commit/8328367c44085b948c003116c0ed74a047237a69
 
-SOONG_CONFIG_NAMESPACES += customVarsPlugin
-
-SOONG_CONFIG_customVarsPlugin :=
-
-define addVar
-  SOONG_CONFIG_customVarsPlugin += $(1)
-  SOONG_CONFIG_customVarsPlugin_$(1) := $($1)
-endef
-
-$(foreach v,$(EXPORT_TO_SOONG),$(eval $(call addVar,$(v))))
+$(call add_soong_config_namespace,customVarsPlugin)
+$(foreach v,$(EXPORT_TO_SOONG),$(eval $(call add_soong_config_var,customVarsPlugin,$(v))))
 
 SOONG_CONFIG_NAMESPACES += customGlobalVars
 SOONG_CONFIG_customGlobalVars += \
-    additional_gralloc_10_usage_bits \
-    bootloader_message_offset \
-    camera_override_format_from_reserved \
-    target_trust_usb_control_path \
-    target_trust_usb_control_enable \
-    target_trust_usb_control_disable \
     with_selinux_permissive
 
 # Soong bool variables
-SOONG_CONFIG_customGlobalVars_camera_override_format_from_reserved := $(TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED)
 SOONG_CONFIG_customGlobalVars_with_selinux_permissive := $(WITH_SELINUX_PERMISSIVE)
 
 # Set default values
-BOOTLOADER_MESSAGE_OFFSET ?= 0
-TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS ?= 0
-TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED ?= false
-TARGET_TRUST_USB_CONTROL_PATH ?= /proc/sys/kernel/deny_new_usb
-TARGET_TRUST_USB_CONTROL_ENABLE ?= 1
-TARGET_TRUST_USB_CONTROL_DISABLE ?= 0
 WITH_SELINUX_PERMISSIVE ?= false
 
-# Soong value variables
-SOONG_CONFIG_customGlobalVars_additional_gralloc_10_usage_bits := $(TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS)
-SOONG_CONFIG_customGlobalVars_bootloader_message_offset := $(BOOTLOADER_MESSAGE_OFFSET)
-SOONG_CONFIG_customGlobalVars_target_trust_usb_control_path := $(TARGET_TRUST_USB_CONTROL_PATH)
-SOONG_CONFIG_customGlobalVars_target_trust_usb_control_enable := $(TARGET_TRUST_USB_CONTROL_ENABLE)
-SOONG_CONFIG_customGlobalVars_target_trust_usb_control_disable := $(TARGET_TRUST_USB_CONTROL_DISABLE)
+# Camera
+ifneq ($(TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED),)
+    $(warning TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED is deprecated, please migrate to soong_config_set,camera,override_format_from_reserved)
+    $(call soong_config_set,camera,override_format_from_reserved,$(TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED))
+endif
+
+# Libui
+ifneq ($(TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS),)
+    $(call soong_config_set,libui,additional_gralloc_10_usage_bits,$(TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS))
+endif
 
 # Lineage Health HAL
 ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH),)
+    $(warning TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH is deprecated, please migrate to soong_config_set,lineage_health,charging_control_charging_path)
     $(call soong_config_set,lineage_health,charging_control_charging_path,$(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH))
 endif
 ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_DEADLINE_PATH),)
+    $(warning TARGET_HEALTH_CHARGING_CONTROL_DEADLINE_PATH is deprecated, please migrate to soong_config_set,lineage_health,charging_control_deadline_path)
     $(call soong_config_set,lineage_health,charging_control_deadline_path,$(TARGET_HEALTH_CHARGING_CONTROL_DEADLINE_PATH))
 endif
 ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED),)
+    $(warning TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED is deprecated, please migrate to soong_config_set,lineage_health,charging_control_charging_enabled)
     $(call soong_config_set,lineage_health,charging_control_charging_enabled,$(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED))
 endif
 ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED),)
+    $(warning TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED is deprecated, please migrate to soong_config_set,lineage_health,charging_control_charging_disabled)
     $(call soong_config_set,lineage_health,charging_control_charging_disabled,$(TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED))
 endif
 ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS),)
+    $(warning TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS is deprecated, please migrate to soong_config_set,lineage_health,charging_control_supports_bypass)
     $(call soong_config_set,lineage_health,charging_control_supports_bypass,$(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS))
 endif
 ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE),)
+    $(warning TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE is deprecated, please migrate to soong_config_set,lineage_health,charging_control_supports_deadline)
     $(call soong_config_set,lineage_health,charging_control_supports_deadline,$(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_DEADLINE))
 endif
 ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_LIMIT),)
+    $(warning TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_LIMIT is deprecated, please migrate to soong_config_set,lineage_health,charging_control_supports_limit)
     $(call soong_config_set,lineage_health,charging_control_supports_limit,$(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_LIMIT))
 endif
 ifneq ($(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE),)
+    $(warning TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE is deprecated, please migrate to soong_config_set,lineage_health,charging_control_supports_toggle)
     $(call soong_config_set,lineage_health,charging_control_supports_toggle,$(TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE))
-endif
-
-# Lineage PowerShare HAL
-ifneq ($(TARGET_POWERSHARE_PATH),)
-    $(call soong_config_set,lineage_powershare,powershare_path,$(TARGET_POWERSHARE_PATH))
-endif
-ifneq ($(TARGET_POWERSHARE_ENABLED),)
-    $(call soong_config_set,lineage_powershare,powershare_enabled,$(TARGET_POWERSHARE_ENABLED))
-endif
-ifneq ($(TARGET_POWERSHARE_DISABLED),)
-    $(call soong_config_set,lineage_powershare,powershare_disabled,$(TARGET_POWERSHARE_DISABLED))
 endif
 
 # Surfaceflinger
 ifneq ($(TARGET_SURFACEFLINGER_UDFPS_LIB),)
+    $(warning TARGET_SURFACEFLINGER_UDFPS_LIB is deprecated, please migrate to soong_config_set,surfaceflinger,udfps_lib)
     $(call soong_config_set,surfaceflinger,udfps_lib,$(TARGET_SURFACEFLINGER_UDFPS_LIB))
 endif
 
 # Vendor init
 ifneq ($(TARGET_INIT_VENDOR_LIB),)
+    $(warning TARGET_INIT_VENDOR_LIB is deprecated, please migrate to soong_config_set,libinit,vendor_init_lib)
     $(call soong_config_set,libinit,vendor_init_lib,$(TARGET_INIT_VENDOR_LIB))
 endif

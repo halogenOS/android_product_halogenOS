@@ -76,89 +76,6 @@ cc_library_headers {
     defaults: ["generated_kernel_header_defaults"],
 }
 
-// Target platform agnostic config modules
-soong_config_module_type {
-    name: "camera_override_format_from_reserved",
-    module_type: "cc_defaults",
-    config_namespace: "customGlobalVars",
-    bool_variables: ["camera_override_format_from_reserved"],
-    properties: ["cppflags"],
-}
-
-camera_override_format_from_reserved {
-    name: "camera_override_format_from_reserved_defaults",
-    soong_config_variables: {
-        camera_override_format_from_reserved: {
-            cppflags: ["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"],
-        },
-    },
-}
-
-soong_config_module_type {
-    name: "gralloc_10_usage_bits",
-    module_type: "cc_defaults",
-    config_namespace: "customGlobalVars",
-    value_variables: ["additional_gralloc_10_usage_bits"],
-    properties: ["cppflags"],
-}
-
-gralloc_10_usage_bits {
-    name: "gralloc_10_usage_bits_defaults",
-    soong_config_variables: {
-        additional_gralloc_10_usage_bits: {
-            cppflags: ["-DADDNL_GRALLOC_10_USAGE_BITS=%s"],
-        },
-    },
-}
-
-soong_config_module_type {
-    name: "trust_usb_control",
-    module_type: "cc_defaults",
-    config_namespace: "customGlobalVars",
-    value_variables: [
-        "target_trust_usb_control_path",
-        "target_trust_usb_control_enable",
-        "target_trust_usb_control_disable",
-    ],
-    properties: ["cppflags"],
-}
-
-trust_usb_control {
-    name: "trust_usb_control_defaults",
-    soong_config_variables: {
-        target_trust_usb_control_path: {
-            cppflags: ["-DUSB_CONTROL_PATH=\"%s\""],
-        },
-        target_trust_usb_control_enable: {
-            cppflags: ["-DUSB_CONTROL_ENABLE=\"%s\""],
-        },
-        target_trust_usb_control_disable: {
-            cppflags: ["-DUSB_CONTROL_DISABLE=\"%s\""],
-        },
-    },
-}
-
-soong_config_module_type {
-    name: "bootloader_message_offset",
-    module_type: "cc_defaults",
-    config_namespace: "customGlobalVars",
-    value_variables: ["bootloader_message_offset"],
-    properties: [
-        "cflags",
-        "export_cflags",
-    ],
-}
-
-bootloader_message_offset {
-    name: "bootloader_message_offset_defaults",
-    soong_config_variables: {
-        bootloader_message_offset: {
-            cflags: ["-DBOARD_RECOVERY_BLDRMSG_OFFSET=%s"],
-            export_cflags: ["-DBOARD_RECOVERY_BLDRMSG_OFFSET=%s"],
-        },
-    },
-}
-
 soong_config_module_type {
     name: "with_selinux_permissive",
     module_type: "cc_defaults",
@@ -175,4 +92,3 @@ with_selinux_permissive {
         },
     },
 }
-
