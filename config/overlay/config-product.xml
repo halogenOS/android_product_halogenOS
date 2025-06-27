@@ -13,7 +13,6 @@
     <overlay package="custom.theme.black" mutable="true" enabled="false" />
     <overlay package="customaosp.overlay.font.lato" mutable="true" enabled="false" />
     <overlay package="customaosp.overlay.font.rubik" mutable="true" enabled="false" />
-    <overlay package="customaosp.overlay.font.sourcesanspro" mutable="true" enabled="false" />
     <overlay package="com.android.theme.icon.pebble" mutable="true" enabled="false" />
     <overlay package="com.android.theme.icon.roundedrect" mutable="true" enabled="false" />
     <overlay package="com.android.theme.icon.square" mutable="true" enabled="false" />
