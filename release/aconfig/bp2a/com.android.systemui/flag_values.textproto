@@ -7,28 +7,7 @@ flag_value {
 
 flag_value {
   package: "com.android.systemui"
-  name: "notifications_footer_view_refactor"
-  state: ENABLED
-  permission: READ_ONLY
-}
-
-flag_value {
-  package: "com.android.systemui"
   name: "notifications_icon_container_refactor"
-  state: ENABLED
-  permission: READ_ONLY
-}
-
-flag_value {
-  package: "com.android.systemui"
-  name: "notifications_improved_hun_animation"
-  state: ENABLED
-  permission: READ_ONLY
-}
-
-flag_value {
-  package: "com.android.systemui"
-  name: "notification_content_alpha_optimization"
   state: ENABLED
   permission: READ_ONLY
 }
@@ -43,13 +22,6 @@ flag_value {
 flag_value {
   package: "com.android.systemui"
   name: "notifications_background_icons"
-  state: ENABLED
-  permission: READ_ONLY
-}
-
-flag_value {
-  package: "com.android.systemui"
-  name: "keyguard_bottom_area_refactor"
   state: ENABLED
   permission: READ_ONLY
 }
