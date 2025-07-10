@@ -35,3 +35,7 @@ breakfast() {
     ${CUSTOM_PRODUCT_DIR}/build/tools/roomservice.py $1
     cd "$PWD"
 }
+
+CLANG_VERSION=$(build/soong/scripts/get_clang_version.py)
+export LLVM_AOSP_PREBUILTS_VERSION="${CLANG_VERSION}"
+
