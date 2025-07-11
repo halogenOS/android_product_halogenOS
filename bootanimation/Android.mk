@@ -20,22 +20,9 @@ TARGET_GENERATED_BOOTANIMATION := $(TARGET_OUT_INTERMEDIATES)/BOOTANIMATION/boot
 $(TARGET_GENERATED_BOOTANIMATION): INTERMEDIATES := $(call intermediates-dir-for,BOOTANIMATION,bootanimation)
 $(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP) $(shell find $(CUSTOM_PRODUCT_DIR)/bootanimation/ -type f)
 	@echo "Building bootanimation.zip"
-	@rm -rf $(dir $@) $(INTERMEDIATES)
-	@mkdir -p $(dir $@) $(INTERMEDIATES)
-	$(hide) cp -R $(CUSTOM_PRODUCT_DIR)/bootanimation/frames/. $(INTERMEDIATES)
-	$(hide) if [ $(TARGET_SCREEN_HEIGHT) -lt $(TARGET_SCREEN_WIDTH) ]; then \
-	    IMAGEWIDTH=$(TARGET_SCREEN_WIDTH); \
-	else \
-	    IMAGEHEIGHT=$(TARGET_SCREEN_HEIGHT); \
-	fi; \
-	MOGRIFY="prebuilts/tools-lineage/${HOST_OS}-x86/bin/mogrify"; \
-	RESOLUTION="$$IMAGEWIDTH"x"$$IMAGEHEIGHT" ; \
-	find $(INTERMEDIATES) -type f -iname '*.png' | xargs -n 1 -P 4 $$MOGRIFY -resize $$RESOLUTION -colors 250; \
-	FIRST_PNG_FILE="$$(find $(INTERMEDIATES) -type f -iname '*.png' | head -n1)"; \
-	SCALE_WIDTH="$$($$MOGRIFY -print %w $$FIRST_PNG_FILE)"; \
-	SCALE_HEIGHT="$$($$MOGRIFY -print %h $$FIRST_PNG_FILE)"; \
-	echo "$$SCALE_WIDTH $$SCALE_HEIGHT $$(cat $(CUSTOM_PRODUCT_DIR)/bootanimation/fps.txt)" > $(INTERMEDIATES)/desc.txt; \
-	cat $(CUSTOM_PRODUCT_DIR)/bootanimation/desc.txt >> $(INTERMEDIATES)/desc.txt
+	$(hide) rm -rf $(dir $@)
+	$(hide) mkdir -p $(dir $@)
+	$(hide) BOOTANIM_SIZE=$(TARGET_SCREEN_WIDTH) OUTPUT_DIR="$(INTERMEDIATES)" $(BOOTANIM_PYTHON_ENV)/bin/python3 $(CUSTOM_PRODUCT_DIR)/bootanimation/generate_bootanim.py
 	$(hide) $(SOONG_ZIP) -L 0 -o $@ -C $(INTERMEDIATES) -D $(INTERMEDIATES)
 
 ifeq ($(TARGET_BOOTANIMATION),)
