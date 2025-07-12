@@ -38,6 +38,7 @@ endif
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.custom.build.device.maintainer=$(call base64urlencode,$(RELEASE_DEVICE_MAINTAINERS)) \
     ro.custom.build.version.sp=$(CUSTOM_PLATFORM_SECURITY_PATCH)  \
+    ro.custom.device=$(CUSTOM_DEVICE) \
     ro.custom.version=$(CUSTOM_VERSION) \
     ro.custom.build.version=$(CUSTOM_PLATFORM_VERSION) \
     ro.custom.display.version=$(CUSTOM_DISPLAY_VERSION) \
