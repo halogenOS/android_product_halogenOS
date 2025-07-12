@@ -215,6 +215,17 @@ endif
 $(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/apps.mk)
 $(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/overlays.mk)
 
+# Fonts
+$(call inherit-product, external/custom-fonts/adwaita-sans/fonts.mk)
+$(call inherit-product, external/google-fonts/lato/fonts.mk)
+$(call inherit-product, external/google-fonts/rubik/fonts.mk)
+
+# Fonts
+PRODUCT_PACKAGES += \
+    FontLatoOverlay \
+    FontRubikOverlay
+
+PRODUCT_PACKAGES += custom_fonts_customization_product
 
 PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard $(CUSTOM_PRODUCT_DIR)/release/release_config_map.mk)
 

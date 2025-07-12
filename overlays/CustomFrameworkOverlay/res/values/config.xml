@@ -198,8 +198,14 @@
     <!-- List of comma separated package names for which we the system will not show crash, ANR, etc. dialogs. -->
     <string translatable="false" name="config_appsNotReportingCrashes">com.android.statementservice</string>
 
-    <!-- Name of the font family to use in the default lockscreen clock -->
-    <string name="config_clockFontFamily" translatable="false" />
+    <string name="config_bodyFontFamily" translatable="false">adwaita-sans</string>
+    <string name="config_bodyFontFamilyMedium" translatable="false">adwaita-sans</string>
+    <string name="config_headlineFontFamily" translatable="false">adwaita-sans</string>
+    <string name="config_headlineFontFamilyMedium" translatable="false">adwaita-sans</string>
+    <string name="config_regularFontFamily" translatable="false">adwaita-sans</string>
+    <string name="config_lightFontFamily" translatable="false">adwaita-sans</string>
+    <string name="config_clockFontFamily" translatable="false">adwaita-sans</string>
+    <string name="config_headlineFontFeatureSettings" translatable="false">calt,frac</string>
 
     <string name="config_defaultQrCodeComponent" translatable="false">org.lineageos.aperture/.QrScannerActivity</string>
 

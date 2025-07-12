@@ -1,0 +1,21 @@
+// Merge font customization XMLs
+genrule {
+    name: "custom_fonts_customization",
+    srcs: [
+        ":adwaita_sans_customization",
+        ":lato_fonts_customization",
+        ":rubik_fonts_customization",
+    ],
+    out: ["fonts_customization.xml"],
+    cmd: "python3 $(location merge_fonts.py) $(in) > $(out)",
+    tool_files: ["merge_fonts.py"],
+    product_specific: true,
+}
+
+prebuilt_etc {
+    name: "custom_fonts_customization_product",
+    src: ":custom_fonts_customization",
+    filename: "fonts_customization.xml",
+    sub_dir: "",
+    product_specific: true,
+}
