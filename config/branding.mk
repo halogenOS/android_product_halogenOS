@@ -45,4 +45,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.custom.build_type=$(CUSTOM_BUILD_TYPE) \
 
 PRODUCT_SYSTEM_PROPERTIES += \
-	ro.build.fingerprint?=$(BUILD_FINGERPRINT)
+    ro.build.fingerprint?=$(BUILD_FINGERPRINT) \
+    ro.custom.build.version.sp=$(CUSTOM_PLATFORM_SECURITY_PATCH) \
+    ro.custom.device=$(CUSTOM_DEVICE)
