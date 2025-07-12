@@ -212,12 +212,13 @@ else
 $(shell echo Using AVB key $(PRODUCT_DEFAULT_AVB_KEY) >&2)
 endif
 
-include $(CUSTOM_PRODUCT_DIR)/config/apps.mk
-include $(CUSTOM_PRODUCT_DIR)/config/overlays.mk
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/apps.mk)
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/overlays.mk)
+
 
 PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard $(CUSTOM_PRODUCT_DIR)/release/release_config_map.mk)
 
-include $(CUSTOM_PRODUCT_DIR)/config/branding.mk
+$(call inherit-product, $(CUSTOM_PRODUCT_DIR)/config/branding.mk)
 
 ifeq ($(RELEASE_PLATFORM_SECURITY_PATCH),$(VENDOR_SECURITY_PATCH))
 $(shell echo "Note: Release platform security patch is the same as vendor security patch ($(RELEASE_PLATFORM_SECURITY_PATCH) == $(VENDOR_SECURITY_PATCH))" >&2)
