@@ -96,10 +96,6 @@ TARGET_SCREEN_HEIGHT ?= 1920
 PRODUCT_PACKAGES += \
     bootanimation.zip
 
-# Build Manifest
-PRODUCT_PACKAGES += \
-    build-manifest
-
 ifeq ($(PRODUCT_IS_ATV),)
 PRODUCT_PACKAGES += \
     ExactCalculator \
