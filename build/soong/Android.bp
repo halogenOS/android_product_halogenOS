@@ -72,8 +72,8 @@ cc_library_headers {
 }
 
 cc_library_headers {
-    name: "qti_kernel_headers",
-    defaults: ["generated_kernel_header_defaults"],
+    name: "prebuilt_kernel_headers",
+    defaults: ["prebuilt_kernel_header_defaults"],
 }
 
 soong_config_module_type {
