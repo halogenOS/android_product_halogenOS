@@ -42,6 +42,3 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.custom.build.version=$(CUSTOM_PLATFORM_VERSION) \
     ro.custom.display.version=$(CUSTOM_DISPLAY_VERSION) \
     ro.custom.build_type=$(CUSTOM_BUILD_TYPE) \
-
-PRODUCT_SYSTEM_PROPERTIES += \
-	ro.build.fingerprint?=$(BUILD_FINGERPRINT)
