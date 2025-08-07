@@ -224,4 +224,5 @@
     <bool name="config_longPressOnPowerForAssistantSettingAvailable">false</bool>
 
     <bool name="config_screen_off_udfps_enabled">true</bool>
+    <bool name="config_screen_off_udfps_default_on">true</bool>
 </resources>
