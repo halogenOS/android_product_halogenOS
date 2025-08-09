@@ -203,6 +203,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.sys.sussybox.fail=0 \
     persist.sys.pihooks.disable=0
 
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(CUSTOM_PRODUCT_DIR)/config/device_framework_matrix.xml
+
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(CUSTOM_PRODUCT_DIR)/build/target/product/security/custom
 
