@@ -196,6 +196,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.wm.debug.predictive_back_sysui_enab
 # Disable Storage Manger by default
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.storage_manager.enabled=false
 
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.sys.sussybox.fail=0 \
+    persist.sys.pihooks.disable=0
+
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(CUSTOM_PRODUCT_DIR)/build/target/product/security/custom
 
