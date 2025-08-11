@@ -28,4 +28,5 @@
     <dimen name="system_app_widget_background_radius">28dp</dimen>
     <!-- System-provided radius for inner views on app widgets. The resolved value of this resource may change at runtime. -->
     <dimen name="system_app_widget_inner_radius">20dp</dimen>
+    <dimen name="default_background_blur_radius">48dp</dimen>
 </resources>
