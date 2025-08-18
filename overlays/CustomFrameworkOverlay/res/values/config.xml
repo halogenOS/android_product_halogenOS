@@ -205,7 +205,7 @@
     <string name="config_regularFontFamily" translatable="false">adwaita-sans</string>
     <string name="config_lightFontFamily" translatable="false">adwaita-sans</string>
     <string name="config_clockFontFamily" translatable="false">adwaita-sans</string>
-    <string name="config_clockFontFeatureSettings" translatable="false">ss01</string>
+    <string name="config_clockFontFeatureSettings" translatable="false">tnum</string>
     <string name="config_headlineFontFeatureSettings" translatable="false">calt,frac</string>
 
     <string name="config_defaultQrCodeComponent" translatable="false">org.lineageos.aperture/.QrScannerActivity</string>
