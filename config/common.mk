@@ -105,25 +105,25 @@ PRODUCT_PACKAGES += \
     Jelly
 endif
 
-PRODUCT_PACKAGES += \
-    Updater
+# PRODUCT_PACKAGES += \
+#     Updater
 # Config
-PRODUCT_PACKAGES += \
-    SimpleDeviceConfig \
-    SimpleSettingsConfig
+# PRODUCT_PACKAGES += \
+#     SimpleDeviceConfig \
+#     SimpleSettingsConfig
 
 # Extra tools
-PRODUCT_PACKAGES += \
-    bash \
-    curl \
-    getcap \
-    htop \
-    nano \
-    setcap \
-    vim
+# PRODUCT_PACKAGES += \
+#     bash \
+#     curl \
+#     getcap \
+#     htop \
+#     nano \
+#     setcap \
+#     vim
 
-PRODUCT_PACKAGES += \
-    nano_recovery
+# PRODUCT_PACKAGES += \
+#     nano_recovery
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/curl \
@@ -135,8 +135,8 @@ PRODUCT_COPY_FILES += \
     $(CUSTOM_PRODUCT_DIR)/prebuilt/common/bin/wipe-frp.sh:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/wipe-frp
 
 # rsync
-PRODUCT_PACKAGES += \
-    rsync
+# PRODUCT_PACKAGES += \
+#     rsync
 
 PRODUCT_COPY_FILES += \
     $(CUSTOM_PRODUCT_DIR)/prebuilt/common/etc/init/init.custom.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.custom.rc
@@ -154,8 +154,8 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
 endif
 
 # Root
-PRODUCT_PACKAGES += \
-    adb_root
+# PRODUCT_PACKAGES += \
+#     adb_root
 
 # SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
@@ -181,10 +181,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
     setupwizard.theme=glif_v4 \
     setupwizard.feature.day_night_mode_enabled=true
 
-PRODUCT_PACKAGES += \
-    DocumentsUIOverlay \
-    NetworkStackOverlay \
-    PermissionControllerOverlay
+# PRODUCT_PACKAGES += \
+#     DocumentsUIOverlay \
+#     NetworkStackOverlay \
+#     PermissionControllerOverlay
 
 # Translations
 CUSTOM_LOCALES += \
@@ -231,9 +231,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += custom_fonts_customization_product
 
 PRODUCT_PACKAGES += \
-    GmsCompat \
-    CertifiedKeyboxOverlay \
+    GmsCompat
+
+# Only include certified overlays if they exist
+ifneq ($(wildcard packages/apps/EvilIntegrity/CertifiedPropsOverlay),)
+PRODUCT_PACKAGES += \
     CertifiedPropsOverlay
+endif
+
+ifneq ($(wildcard packages/apps/EvilIntegrity/CertifiedKeyboxOverlay),)
+PRODUCT_PACKAGES += \
+    CertifiedKeyboxOverlay
+endif
 
 PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard $(CUSTOM_PRODUCT_DIR)/release/release_config_map.mk)
 

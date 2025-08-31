@@ -5,11 +5,11 @@ PRODUCT_SIZE := full
 
 # Apps
 PRODUCT_PACKAGES += \
-    Camelot \
-    Etar \
-    Profiles \
-    Recorder \
-    Twelve
+    Etar
+#     Camelot \
+#     Profiles \
+#     Recorder \
+#     Twelve
 
 ifneq ($(PRODUCT_NO_CAMERA),true)
 PRODUCT_PACKAGES += \
@@ -17,14 +17,14 @@ PRODUCT_PACKAGES += \
 endif
 
 ifneq ($(TARGET_EXCLUDES_AUDIOFX),true)
-PRODUCT_PACKAGES += \
-    AudioFX
+# PRODUCT_PACKAGES += \
+#     AudioFX
 endif
 
 # Extra cmdline tools
 PRODUCT_PACKAGES += \
-    unrar \
     zstd
+#     unrar \
 
 # Include custom LatinIME dictionaries
 PRODUCT_PACKAGE_OVERLAYS += $(CUSTOM_PRODUCT_DIR)/overlay/dictionaries
