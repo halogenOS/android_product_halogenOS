@@ -58,7 +58,7 @@ PRODUCT_PACKAGES += \
     IconShapeVesselOverlay
 
 # Media
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     media.recorder.show_manufacturer_and_model=true
 
 # SystemUI plugins
