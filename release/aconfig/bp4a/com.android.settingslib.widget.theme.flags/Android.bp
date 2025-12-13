@@ -1,5 +1,4 @@
-//
-// Copyright 2024 Google Inc. All rights reserved.
+// Copyright 2025 Google Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,9 +13,9 @@
 // limitations under the License.
 
 aconfig_values {
-    name: "aconfig-values-bp2a-com.android.systemui.shared-all",
-    package: "com.android.systemui.shared",
-    srcs: [
-        "*.textproto",
-    ],
+  name: "aconfig-values-bp4a-com.android.settingslib.widget.theme.flags-all",
+  package: "com.android.settingslib.widget.theme.flags",
+  srcs: [
+    "*.textproto",
+  ]
 }
