@@ -190,8 +190,8 @@ CUSTOM_LOCALES += \
     cy_GB \
     fur_IT
 
-# Disable Storage Manger by default
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.storage_manager.enabled=false
+# Disable Storage Manager by default
+PRODUCT_PRODUCT_PROPERTIES += ro.storage_manager.enabled=false
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.sys.sussybox.fail=0 \
