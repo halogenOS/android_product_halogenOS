@@ -141,9 +141,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(CUSTOM_PRODUCT_DIR)/prebuilt/common/etc/init/init.custom.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.custom.rc
 
-PRODUCT_COPY_FILES += \
-    $(CUSTOM_PRODUCT_DIR)/prebuilt/common/etc/init/init.custom.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.custom.rc
-
 # These packages are excluded from user builds
 PRODUCT_PACKAGES_DEBUG += \
     procmem
