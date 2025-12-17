@@ -40,7 +40,7 @@ endif
 PRODUCT_PRODUCT_PROPERTIES += persist.sys.strictmode.disable=true
 endif
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.device_config.configuration.disable_rescue_party=true
+PRODUCT_PRODUCT_PROPERTIES += persist.device_config.configuration.disable_rescue_party=true
 
 # Enable Material Design 3 Expressive
 PRODUCT_PRODUCT_PROPERTIES += \
