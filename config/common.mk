@@ -193,10 +193,6 @@ CUSTOM_LOCALES += \
 # Disable Storage Manager by default
 PRODUCT_PRODUCT_PROPERTIES += ro.storage_manager.enabled=false
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    persist.sys.sussybox.fail=0 \
-    persist.sys.pihooks.disable=0
-
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(CUSTOM_PRODUCT_DIR)/config/device_framework_matrix.xml
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
