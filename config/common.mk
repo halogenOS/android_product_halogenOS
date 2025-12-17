@@ -190,9 +190,6 @@ CUSTOM_LOCALES += \
     cy_GB \
     fur_IT
 
-# Predictive back by default
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.wm.debug.predictive_back_sysui_enable=1
-
 # Disable Storage Manger by default
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.storage_manager.enabled=false
 
