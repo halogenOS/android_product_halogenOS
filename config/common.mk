@@ -193,7 +193,7 @@ CUSTOM_LOCALES += \
 # Disable Storage Manager by default
 PRODUCT_PRODUCT_PROPERTIES += ro.storage_manager.enabled=false
 
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(CUSTOM_PRODUCT_DIR)/config/device_framework_matrix.xml
+# TODO: Add framework_compatibility_matrix.lineage.xml to PRODUCT_PACKAGES when hardware/lineage/interfaces is added
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(CUSTOM_PRODUCT_DIR)/build/target/product/security/custom
