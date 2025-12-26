@@ -101,8 +101,8 @@ PRODUCT_PACKAGES += \
 
 ifeq ($(PRODUCT_IS_ATV),)
 PRODUCT_PACKAGES += \
-    ExactCalculator \
-    Jelly
+    # ExactCalculator \
+    # Jelly
 endif
 
 # PRODUCT_PACKAGES += \
@@ -222,8 +222,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += custom_fonts_customization_product
 
-PRODUCT_PACKAGES += \
-    GmsCompat
+# PRODUCT_PACKAGES += \
+#     GmsCompat
 
 # Only include certified overlays if they exist
 ifneq ($(wildcard packages/apps/EvilIntegrity/CertifiedPropsOverlay),)

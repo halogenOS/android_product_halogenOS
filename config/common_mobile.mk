@@ -16,7 +16,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Apps
 PRODUCT_PACKAGES += \
     AvatarPicker \
-    Glimpse \
+    # Glimpse \
     LatinIME
 #     Backgrounds \
 

@@ -1,10 +1,10 @@
 
 PRODUCT_PACKAGES += \
-	Aperture \
+	# Aperture \
 	Etar \
-	ExactCalculator \
-	Glimpse \
-	Jelly \
+	# ExactCalculator \
+	# Glimpse \
+	# Jelly \
 	Launcher3 \
-	Seedvault \
+	# Seedvault \
 	Wallpapers
