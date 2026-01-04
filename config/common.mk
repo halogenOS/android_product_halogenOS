@@ -194,7 +194,8 @@ CUSTOM_LOCALES += \
 # Disable Storage Manager by default
 PRODUCT_PRODUCT_PROPERTIES += ro.storage_manager.enabled=false
 
-# TODO: Add framework_compatibility_matrix.lineage.xml to PRODUCT_PACKAGES when hardware/lineage/interfaces is added
+# LineageOS HAL compatibility matrix
+PRODUCT_PACKAGES += framework_compatibility_matrix.lineage.xml
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(CUSTOM_PRODUCT_DIR)/build/target/product/security/custom
