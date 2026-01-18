@@ -36,13 +36,21 @@
     </string-array>
 
     <string name="quick_settings_tiles_default" translatable="false">
-        wifi,cell,bt,dnd,flashlight,rotation,airplane,alarm,hotspot,caffeine,mictoggle,cameratoggle,wallet,controls
+        wifi,cell,bt,rotation,airplane,flashlight,hotspot,dnd,location,caffeine,cameratoggle,mictoggle,dark,reduce_brightness
     </string>
 
     <!-- New QS default tiles (QsInCompose) -->
     <string name="quick_settings_tiles_new_default" translatable="false">
-        wifi,cell,bt,dnd,flashlight,rotation,airplane,alarm,hotspot,caffeine,mictoggle,cameratoggle,wallet,controls
+        wifi,cell,bt,rotation,airplane,flashlight,hotspot,dnd,location,caffeine,cameratoggle,mictoggle,dark,reduce_brightness
     </string>
+
+    <!-- Tiles that should be displayed as large (2 columns) by default -->
+    <string-array name="quick_settings_tiles_default_large" translatable="false">
+        <item>internet</item>
+        <item>bt</item>
+        <item>cast</item>
+        <item>caffeine</item>
+    </string-array>
 
     <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->
     <string name="quick_settings_tiles_stock" translatable="false">
