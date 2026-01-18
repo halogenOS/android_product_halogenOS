@@ -242,3 +242,10 @@ flag_value {
   state: ENABLED
   permission: READ_ONLY
 }
+
+flag_value {
+  package: "com.android.systemui"
+  name: "qs_split_internet_tile"
+  state: ENABLED
+  permission: READ_ONLY
+}
