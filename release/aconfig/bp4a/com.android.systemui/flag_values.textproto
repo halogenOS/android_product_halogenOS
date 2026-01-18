@@ -236,3 +236,9 @@ flag_value {
   permission: READ_ONLY
 }
 
+flag_value {
+  package: "com.android.systemui"
+  name: "qs_new_tiles"
+  state: ENABLED
+  permission: READ_ONLY
+}
