@@ -225,4 +225,7 @@
 
     <bool name="config_screen_off_udfps_enabled">true</bool>
     <bool name="config_screen_off_udfps_default_on">true</bool>
+
+    <!-- Disable OAT artifact deletion for hibernated apps to avoid re-compilation overhead -->
+    <bool name="config_hibernationDeletesOatArtifactsEnabled">false</bool>
 </resources>
