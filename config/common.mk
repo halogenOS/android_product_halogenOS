@@ -224,8 +224,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += custom_fonts_customization_product
 
-# PRODUCT_PACKAGES += \
-#     GmsCompat
+PRODUCT_PACKAGES += \
+    AppCompatConfig \
+    GmsCompat \
+    GmsCompatConfig
 
 # Only include certified overlays if they exist
 ifneq ($(wildcard packages/apps/EvilIntegrity/CertifiedPropsOverlay),)
