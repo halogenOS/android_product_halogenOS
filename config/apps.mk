@@ -7,4 +7,5 @@ PRODUCT_PACKAGES += \
 	Jelly \
 	Launcher3 \
 	Seedvault \
-	Wallpapers
+	Wallpapers \
+	ClockStyles
