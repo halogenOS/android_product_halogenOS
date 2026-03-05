@@ -27,6 +27,12 @@
         <item>com.android.systemui.plugin.globalactions.wallet</item>
     </string-array>
 
+    <!-- SystemUI Plugins that can be loaded on user builds (new name). -->
+    <string-array name="config_pluginAllowlist" translatable="false">
+        <item>com.android.systemui</item>
+        <item>custom.clockstyles.symmetra</item>
+    </string-array>
+
     <!-- Icons that don't show in a collapsed non-keyguard statusbar -->
     <string-array name="config_collapsed_statusbar_icon_blocklist" translatable="false">
     </string-array>
