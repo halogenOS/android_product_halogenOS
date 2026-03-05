@@ -217,8 +217,6 @@
 
     <bool name="config_defaultBatteryPercentageSetting">true</bool>
 
-    <bool name="config_dt2sGestureEnabledByDefault">true</bool>
-
     <string name="config_default_dns_server">1.1.1.1</string>
 
     <bool name="config_longPressOnPowerForAssistantSettingAvailable">false</bool>
@@ -228,4 +226,7 @@
 
     <!-- Disable OAT artifact deletion for hibernated apps to avoid re-compilation overhead -->
     <bool name="config_hibernationDeletesOatArtifactsEnabled">false</bool>
+
+    <!-- Enable double tap to sleep on lockscreen -->
+    <bool name="config_supportDoubleTapSleep">true</bool>
 </resources>
