@@ -202,6 +202,9 @@ PRODUCT_PRODUCT_PROPERTIES += ro.storage_manager.enabled=false
 # LineageOS HAL compatibility matrix
 PRODUCT_PACKAGES += framework_compatibility_matrix.lineage.xml
 
+# Custom HAL compatibility matrix
+PRODUCT_PACKAGES += framework_compatibility_matrix.custom.xml
+
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(CUSTOM_PRODUCT_DIR)/build/target/product/security/custom
 
