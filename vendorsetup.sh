@@ -1,4 +1,11 @@
 
+# Source user-local environment overrides (KEYS_DIR, CCACHE_DIR, OUT_DIR, etc.)
+# This file is gitignored and never committed.
+if [ -f "local.conf" ]; then
+    echo "including local.conf"
+    source "local.conf"
+fi
+
 this_product_name="halogenOS"
 
 export CUSTOM_PRODUCT="${CUSTOM_PRODUCT:=$this_product_name}"
@@ -23,7 +30,7 @@ if [[ "$CUSTOM_PRODUCT" == "$this_product_name" ]]; then
                             (repo branch | grep '^\*' | awk '{ print $2 }') )"
 fi
 
-export KEYS_DIR="vendor/halogenOS/private/keys"
+export KEYS_DIR="${KEYS_DIR:-vendor/halogenOS/private/keys}"
 export KEYS_SUBJECT="/C=DE/ST=Bavaria/L=Swabia/O=The halogenOS Project/OU=halogenOS Team/CN=halogenOS/emailAddress=contact@halogenos.org"
 
 breakfast() {

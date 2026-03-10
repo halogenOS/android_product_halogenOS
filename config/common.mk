@@ -208,8 +208,13 @@ PRODUCT_PACKAGES += framework_compatibility_matrix.custom.xml
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(CUSTOM_PRODUCT_DIR)/build/target/product/security/custom
 
+KEYS_DIR ?= vendor/$(CUSTOM_PRODUCT)/private/keys
 -include $(CUSTOM_PRODUCT_DIR)-priv/keys/keys.mk
--include vendor/$(CUSTOM_PRODUCT)/private/keys/keys.mk
+ifneq ($(filter /%,$(KEYS_DIR)),)
+$(shell echo "Note: KEYS_DIR is out-of-tree, signing will happen post-build" >&2)
+else
+-include $(KEYS_DIR)/keys.mk
+endif
 
 ifeq ($(PRODUCT_DEFAULT_AVB_KEY),)
 PRODUCT_DEFAULT_AVB_KEY := external/avb/test/data/testkey_rsa4096.pem
