@@ -229,4 +229,8 @@
 
     <!-- Enable double tap to sleep on lockscreen -->
     <bool name="config_supportDoubleTapSleep">true</bool>
+
+    <!-- Enable camera and microphone privacy toggles -->
+    <bool name="config_supportsMicToggle">true</bool>
+    <bool name="config_supportsCamToggle">true</bool>
 </resources>
