@@ -3,22 +3,21 @@ CUSTOM_BUILD_TYPE ?= UNOFFICIAL
 
 CUSTOM_DEVICE := $(shell echo "$(TARGET_PRODUCT)" | cut -d '_' -f2-)
 
-ifeq ($(CUSTOM_SKIP_BUILD_DATE),)
-CUSTOM_BUILD_DATE := $(shell date -u +"%Y%m%d-%H%M%S" -d @$$(cat $(BUILD_DATETIME_FILE)))
-else
-CUSTOM_BUILD_DATE := 00000000-000000
-endif
+# Build date is injected post-build by sign_build() to keep builds
+# reproducible and avoid unnecessary rebuilds when only the timestamp
+# changes.  The placeholder is replaced with the real date during signing.
+CUSTOM_BUILD_DATE_PLACEHOLDER := 00000000-000000
 
 CUSTOM_PLATFORM_VERSION := $(shell echo $(ROM_VERSION) | cut -d '-' -f2)
 
-CUSTOM_VERSION := $(CUSTOM_PRODUCT_NAME)_$(CUSTOM_DEVICE)-$(CUSTOM_PLATFORM_VERSION)-$(CUSTOM_BUILD_DATE)-$(CUSTOM_BUILD_TYPE)
+CUSTOM_VERSION := $(CUSTOM_PRODUCT_NAME)_$(CUSTOM_DEVICE)-$(CUSTOM_PLATFORM_VERSION)-$(CUSTOM_BUILD_DATE_PLACEHOLDER)-$(CUSTOM_BUILD_TYPE)
 
 CUSTOM_DISPLAY_VERSION := $(CUSTOM_PLATFORM_VERSION)
 
-# Build fingerprint
+# Build fingerprint — uses a fixed build number for reproducibility.
+# The actual timestamp is injected post-build alongside the date.
 ifeq ($(BUILD_FINGERPRINT),)
-BUILD_NUMBER_CUSTOM := $(shell date -u +%H%M)
-BUILD_FINGERPRINT := $(PRODUCT_BRAND)/$(CUSTOM_DEVICE)/$(CUSTOM_DEVICE):$(PLATFORM_VERSION)/$(BUILD_ID)/$(BUILD_NUMBER_CUSTOM):$(TARGET_BUILD_VARIANT)/$(BUILD_SIGNATURE_KEYS)
+BUILD_FINGERPRINT := $(PRODUCT_BRAND)/$(CUSTOM_DEVICE)/$(CUSTOM_DEVICE):$(PLATFORM_VERSION)/$(BUILD_ID)/0000:$(TARGET_BUILD_VARIANT)/$(BUILD_SIGNATURE_KEYS)
 endif
 
 define base64urlencode
