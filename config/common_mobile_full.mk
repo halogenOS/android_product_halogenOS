@@ -5,8 +5,8 @@ PRODUCT_SIZE := full
 
 # Apps
 PRODUCT_PACKAGES += \
+    Camelot \
     Etar
-#     Camelot \
 #     Profiles \
 #     Recorder \
 #     Twelve
