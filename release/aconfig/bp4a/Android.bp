@@ -27,7 +27,6 @@ aconfig_value_set {
         "aconfig-values-bp4a-com.android.settingslib.widget.theme.flags-all",
         "aconfig-values-bp4a-com.android.settingslib.media.flags.flags-all",
         "aconfig-values-bp4a-com.android.egg.flags.flags-all",
-        "aconfig-values-bp4a-com.android.graphics.surfaceflinger.flags-all",
         "aconfig-values-bp4a-com.android.wallpaper-all",
     ],
 }
