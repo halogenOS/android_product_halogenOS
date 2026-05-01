@@ -1,5 +1,5 @@
 aconfig_values {
-  name: "aconfig-values-bp4a-com.android.launcher3.flags-all",
+  name: "aconfig-values-custom-bp4a-com.android.launcher3-all",
   package: "com.android.launcher3",
   srcs: [
     "*.textproto"

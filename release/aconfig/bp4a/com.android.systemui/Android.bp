@@ -1,5 +1,5 @@
 aconfig_values {
-  name: "aconfig-values-bp4a-com.android.systemui.flags-all",
+  name: "aconfig-values-custom-bp4a-com.android.systemui-all",
   package: "com.android.systemui",
   srcs: ["*.textproto"]
 }
