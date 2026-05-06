@@ -230,11 +230,8 @@ $(call inherit-product, external/custom-fonts/adwaita-sans/fonts.mk)
 $(call inherit-product, external/google-fonts/lato/fonts.mk)
 $(call inherit-product, external/google-fonts/rubik/fonts.mk)
 
-# Fonts
-PRODUCT_PACKAGES += \
-    FontLatoOverlay \
-    FontRubikOverlay
-
+# Fonts are surfaced through the custom font system (FontManagerService
+# fabricated overlays) rather than static RROs.
 PRODUCT_PACKAGES += custom_fonts_customization_product
 
 PRODUCT_PACKAGES += \
