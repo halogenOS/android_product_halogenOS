@@ -24,6 +24,7 @@
         <permission name="android.permission.BIND_WALLPAPER" />
         <permission name="android.permission.INSTALL_CUSTOM_FONTS" />
         <permission name="android.permission.RESTART_SYSTEM_UI" />
+        <permission name="android.permission.REBOOT" />
     </privapp-permissions>
     <privapp-permissions package="com.android.launcher3">
         <permission name="android.permission.PACKAGE_USAGE_STATS" />
