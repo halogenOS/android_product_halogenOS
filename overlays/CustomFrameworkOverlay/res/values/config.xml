@@ -229,4 +229,13 @@
     <!-- Enable camera and microphone privacy toggles -->
     <bool name="config_supportsMicToggle">true</bool>
     <bool name="config_supportsCamToggle">true</bool>
+
+    <!-- Shorter base animation durations for a snappier feel.
+         These are the design-time durations; the user-facing animation
+         scale settings still multiply on top of them. -->
+    <integer name="config_shortAnimTime">160</integer>
+    <integer name="config_mediumAnimTime">320</integer>
+    <integer name="config_longAnimTime">400</integer>
+    <integer name="config_activityShortDur">130</integer>
+    <integer name="config_activityDefaultDur">190</integer>
 </resources>
