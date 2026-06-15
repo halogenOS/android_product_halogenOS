@@ -8,4 +8,5 @@ PRODUCT_PACKAGES += \
 	Launcher3 \
 	Seedvault \
 	Wallpapers \
-	ClockStyles
+	ClockStyles \
+	StandByWatch
