@@ -240,14 +240,14 @@ PRODUCT_PACKAGES += \
     GmsCompatConfig
 
 # Only include certified overlays if they exist
+ifneq ($(wildcard packages/apps/EvilIntegrity/CorporateControlSatisfier),)
+PRODUCT_PACKAGES += \
+    CorporateControlSatisfier
+endif
+
 ifneq ($(wildcard packages/apps/EvilIntegrity/CertifiedPropsOverlay),)
 PRODUCT_PACKAGES += \
     CertifiedPropsOverlay
-endif
-
-ifneq ($(wildcard packages/apps/EvilIntegrity/CertifiedKeyboxOverlay),)
-PRODUCT_PACKAGES += \
-    CertifiedKeyboxOverlay
 endif
 
 PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard $(CUSTOM_PRODUCT_DIR)/release/release_config_map.mk)
